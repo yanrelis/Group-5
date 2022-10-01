@@ -1,21 +1,16 @@
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.time.LocalDate;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import java.util.*; 
 
 
 public class V1OwnerInfo extends JFrame {
-	private static final int FRAME_WIDTH = 600;
+	   private static final int FRAME_WIDTH = 600;
 	   private static final int FRAME_HEIGHT = 500;
 	   
 	   private JLabel fNameLabel;
@@ -24,7 +19,7 @@ public class V1OwnerInfo extends JFrame {
 	   private JTextField lNameField;
 	   private JLabel lNumLabel;
 	   private JTextField lNumField;
-	   private JButton buttonAddUser;
+	   private JButton buttonConfirmInfo;
 	   private JLabel resultName;	
 	   private JLabel emailLabel;
 	   private JTextField emailField;
@@ -33,13 +28,15 @@ public class V1OwnerInfo extends JFrame {
 	   private JTextField phoneNumField;
 	   private JLabel resultPhoneN;
 	   private JLabel resultLicenseN;
-	   private JButton buttonLicense;
+	   private JButton buttonAddUser;
 
 	   private static String fName ="";
 	   private static String lName = ""; 
 	   private static String email = ""; 
 	   private static String licenseNum = ""; 
 	   private static String phoneNum= ""; 
+	   
+	   private static ArrayList<V1OwnerInfo> ownerInfo;
 	   
 	   public static String getfName() {
 			return fName;}
@@ -72,6 +69,14 @@ public class V1OwnerInfo extends JFrame {
 				V1OwnerInfo.phoneNum = phoneNum;}
 
 //constructor
+		public V1OwnerInfo(String firstN, String lastN, String phoneN, String emailAddress, String licenseN){
+			firstN = fName; 
+			lastN = lName; 
+			phoneN = phoneNum; 
+			emailAddress = email; 
+			licenseN = licenseNum;
+		}
+		
 // *MISSING OWNERID*
 	   public V1OwnerInfo() {
 	   resultName = new JLabel();
@@ -84,6 +89,7 @@ public class V1OwnerInfo extends JFrame {
 	      createTxtPhoneN();
 	      createTxtEmail();
 	      createTxtLicenseN();
+	      createButtonConfirmInfo();
 	      createButtonAddUser();
 	      createPanel();
 
@@ -115,19 +121,19 @@ public class V1OwnerInfo extends JFrame {
 	   
 //Create Text Box for LicenseNum 
 	   private void createTxtLicenseN(){
-		      lNumLabel = new JLabel("License Num: ");
+		      lNumLabel = new JLabel("License Number: ");
 		      final int FIELD_WIDTH = 10;
 		      lNumField = new JTextField(FIELD_WIDTH);}
 
-//Create Button 
-	   private void createButtonAddUser() {
-	      buttonAddUser = new JButton("ADD USER");
+//Create Button to Confirm Info
+	   private void createButtonConfirmInfo() {
+	      buttonConfirmInfo = new JButton("Confirm Info");
 	      
-	      ActionListener listener = new AddUserListener();
-	      buttonAddUser.addActionListener(listener);}
+	      ActionListener listener = new ConfirmInfoListener();
+	      buttonConfirmInfo.addActionListener(listener);}
 	   
 //implement results
-	   public class AddUserListener implements ActionListener {
+	   public class ConfirmInfoListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
 				String fN = fNameField.getText();
 				String lN = lNameField.getText();
@@ -141,6 +147,36 @@ public class V1OwnerInfo extends JFrame {
 			    resultLicenseN.setText("License Number: " + lNum);}
 			 }
 	   
+//Button Needed to Add Car  
+	   
+	   
+	   
+//Create Button to Add User
+	   private void createButtonAddUser() {
+	      buttonAddUser = new JButton("Add User");
+	      
+	      ActionListener listener = new AddUserListener();
+	      buttonAddUser.addActionListener(listener);}
+	   
+//implement results
+	   public class AddUserListener implements ActionListener {
+			 public void actionPerformed(ActionEvent event){
+				 	String fN = fNameField.getText();
+					String lN = lNameField.getText();
+					String phoneN = phoneNumField.getText();
+					String email = emailField.getText();
+					String lNum = lNumField.getText();
+
+//Is an arrayList necessary to print out to file???
+					V1OwnerInfo user = new V1OwnerInfo(fN,lN, phoneN, email, lNum);
+					ownerInfo = new ArrayList<V1OwnerInfo>();
+					ownerInfo.add(user);}
+	   		}
+	   
+/* Tester
+ * for (int i=0; i<ownerInfo.size(); i++) {
+ * System.out.println(ownerInfo.get(i));}
+ * prints out array but needs to be converted toString()*/
 	   
 //create a panel
 	   private void createPanel(){
@@ -155,15 +191,17 @@ public class V1OwnerInfo extends JFrame {
 	      panel.add(emailField);
 	      panel.add(lNumLabel);
 	      panel.add(lNumField);
+	      panel.add(buttonConfirmInfo);
 	      panel.add(buttonAddUser);
 	      panel.add(resultName); 
 	      panel.add(resultPhoneN);
 	      panel.add(resultEmail);
 	      panel.add(resultLicenseN);
-	
+
 	      // adds to current object
 	      add(panel);} 
 	   
 	
 
 }
+
