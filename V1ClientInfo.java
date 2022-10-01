@@ -29,10 +29,10 @@ public class V1ClientInfo extends JFrame {
 	   private JLabel resultEmail;
 	   private JButton buttonEmail;
 
-	   private static String fName ="Ed";
-	   private static String lName = "Eddie"; 
+	   private static String fName ="";
+	   private static String lName = ""; 
 	   private static LocalDate Dob = LocalDate.of(2000,1,02);; 
-	   private static String email = "JohnDoe@gmail.com"; 
+	   private static String email = ""; 
 	   
 	   public static String getfName() {
 			return fName;}
@@ -78,15 +78,14 @@ public class V1ClientInfo extends JFrame {
 	   private void createTxtFieldFName(){
 	      fNameLabel = new JLabel("First Name: ");
 	      final int FIELD_WIDTH = 10;
-	      fNameField = new JTextField(FIELD_WIDTH);
-	      fNameField.setText("" + fName);} 
+	      fNameField = new JTextField(FIELD_WIDTH);} 
 
 //Create Text Box for Last Name
 	   private void createTxtFieldLName(){
 		      lNameLabel = new JLabel("Last Name: ");
 		      final int FIELD_WIDTH = 10;
 		      lNameField = new JTextField(FIELD_WIDTH);
-		      lNameField.setText("" + lName);} 
+		      } 
 
 //Create Text Box for LicenseNum 
 	   private void createTxtEmail(){
