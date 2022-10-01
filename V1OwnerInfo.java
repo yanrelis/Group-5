@@ -24,15 +24,22 @@ public class V1OwnerInfo extends JFrame {
 	   private JTextField lNameField;
 	   private JLabel lNumLabel;
 	   private JTextField lNumField;
-	   private JButton buttonCN;
+	   private JButton buttonAddUser;
 	   private JLabel resultName;	
+	   private JLabel emailLabel;
+	   private JTextField emailField;
+	   private JLabel resultEmail;
+	   private JLabel phoneNumLabel;
+	   private JTextField phoneNumField;
+	   private JLabel resultPhoneN;
 	   private JLabel resultLicenseN;
 	   private JButton buttonLicense;
 
 	   private static String fName ="";
 	   private static String lName = ""; 
-	   private static LocalDate Dob = LocalDate.of(2000,1,02);; 
-	   private static String LicenseNum = ""; 
+	   private static String email = ""; 
+	   private static String licenseNum = ""; 
+	   private static String phoneNum= ""; 
 	   
 	   public static String getfName() {
 			return fName;}
@@ -46,29 +53,38 @@ public class V1OwnerInfo extends JFrame {
 		public static void setlName(String lName) {
 			V1OwnerInfo.lName = lName;}
 
-		public static LocalDate getDob() {
-			return Dob;}
+		public static String getEmail() {
+			return email;}
 
-		public static void setDob(LocalDate dob) {
-			Dob = dob;}
+		public static void setEmail(String Email) {
+			Email= email;}
 
 		public static String getLicenseNum() {
-			return LicenseNum;}
+			return licenseNum;}
 
-		public static void setLicenseNum(String licenseNum) {
+		public static void setLicenseNum(String LicenseNum) {
 			LicenseNum = licenseNum;}
+		
+		 public static String getPhoneNum() {
+				return phoneNum;}
+
+		public static void setPhoneNum(String phoneNum) {
+				V1OwnerInfo.phoneNum = phoneNum;}
 
 //constructor
 // *MISSING OWNERID*
 	   public V1OwnerInfo() {
 	   resultName = new JLabel();
+	   resultEmail = new JLabel();
+	   resultPhoneN = new JLabel();
 	   resultLicenseN = new JLabel();
-	   
-	      createTxtFieldFName();
+	   	  
+	   	  createTxtFieldFName();
 	      createTxtFieldLName();
+	      createTxtPhoneN();
+	      createTxtEmail();
 	      createTxtLicenseN();
-	      createButtonCN();
-	      createButtonLicenseN();
+	      createButtonAddUser();
 	      createPanel();
 
 	      setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -85,7 +101,18 @@ public class V1OwnerInfo extends JFrame {
 		      lNameLabel = new JLabel("Last Name: ");
 		      final int FIELD_WIDTH = 10;
 		      lNameField = new JTextField(FIELD_WIDTH);} 
-
+//Create Text Box for Phone Num 
+	   private void createTxtPhoneN(){
+		      phoneNumLabel = new JLabel("Phone Number: ");
+		      final int FIELD_WIDTH = 15;
+		      phoneNumField = new JTextField(FIELD_WIDTH);}
+	   
+//Create Text Box for Email
+	   private void createTxtEmail(){
+		      emailLabel = new JLabel("Email: ");
+		      final int FIELD_WIDTH = 15;
+		      emailField = new JTextField(FIELD_WIDTH);}
+	   
 //Create Text Box for LicenseNum 
 	   private void createTxtLicenseN(){
 		      lNumLabel = new JLabel("License Num: ");
@@ -93,34 +120,27 @@ public class V1OwnerInfo extends JFrame {
 		      lNumField = new JTextField(FIELD_WIDTH);}
 
 //Create Button 
-	   private void createButtonCN() {
-	      buttonCN = new JButton("Confirm Name");
+	   private void createButtonAddUser() {
+	      buttonAddUser = new JButton("ADD USER");
 	      
-	      ActionListener listener = new AddNameListener();
-	      buttonCN.addActionListener(listener);}
+	      ActionListener listener = new AddUserListener();
+	      buttonAddUser.addActionListener(listener);}
 	   
 //implement results
-	   public class AddNameListener implements ActionListener {
+	   public class AddUserListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
 				String fN = fNameField.getText();
 				String lN = lNameField.getText();
+				String phoneN = phoneNumField.getText();
+				String email = emailField.getText();
+				String lNum = lNumField.getText();
 						
-			    resultName.setText("Confirm Name:" + fN + " " + lN);}    
+			    resultName.setText("Name:" + fN + " " + lN);
+			    resultPhoneN.setText("Phone Number: " + phoneN);
+			    resultEmail.setText("Email: " + email);
+			    resultLicenseN.setText("License Number: " + lNum);}
 			 }
 	   
-//Create Button License Num
-	   private void createButtonLicenseN() {
-		      buttonLicense = new JButton("Confirm LicenseNum");
-		      
-		      ActionListener listener = new AddLicenseListener();
-		      buttonLicense.addActionListener(listener);}
-
-	   public class AddLicenseListener implements ActionListener {
-			 public void actionPerformed(ActionEvent event){
-				String lNum = lNumField.getText();
-			
-			    resultLicenseN.setText("Confirm License Num: " + lNum);}    
-			 }
 	   
 //create a panel
 	   private void createPanel(){
@@ -129,11 +149,16 @@ public class V1OwnerInfo extends JFrame {
 	      panel.add(fNameField);
 	      panel.add(lNameLabel);
 	      panel.add(lNameField);
+	      panel.add(phoneNumLabel);
+	      panel.add(phoneNumField);
+	      panel.add(emailLabel);
+	      panel.add(emailField);
 	      panel.add(lNumLabel);
 	      panel.add(lNumField);
-	      panel.add(buttonCN);
-	      panel.add(buttonLicense);
+	      panel.add(buttonAddUser);
 	      panel.add(resultName); 
+	      panel.add(resultPhoneN);
+	      panel.add(resultEmail);
 	      panel.add(resultLicenseN);
 	
 	      // adds to current object
