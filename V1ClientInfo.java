@@ -22,16 +22,18 @@ public class V1ClientInfo extends JFrame {
 	   private JTextField fNameField;
 	   private JLabel lNameLabel;
 	   private JTextField lNameField;
-	   private JLabel EmailLabel;
-	   private JTextField EmailField;
-	   private JButton buttonCN;
+	   private JLabel phoneNumLabel; 
+	   private JTextField phoneNumField;
+	   private JLabel emailLabel;
+	   private JTextField emailField;
+	   private JButton buttonAddUser;
 	   private JLabel resultName;	
 	   private JLabel resultEmail;
-	   private JButton buttonEmail;
+	   private JLabel resultPhoneN;
 
 	   private static String fName ="";
 	   private static String lName = ""; 
-	   private static LocalDate Dob = LocalDate.of(2000,1,02);; 
+	   private static String phoneN =""; 
 	   private static String email = ""; 
 	   
 	   public static String getfName() {
@@ -46,29 +48,30 @@ public class V1ClientInfo extends JFrame {
 		public static void setlName(String lName) {
 			V1ClientInfo.lName = lName;}
 
-		public static LocalDate getDob() {
-			return Dob;}
+		public static String getPhoneN() {
+			return phoneN;}
 
-		public static void setDob(LocalDate dob) {
-			Dob = dob;}
+		public static void setPhoneN(String phoneN) {
+			V1ClientInfo.phoneN = phoneN;}
 
 		public static String getEmail() {
 			return email;}
 
-		public static void setLicenseNum(String Email) {
+		public static void setEmail(String Email) {
 			Email= email;}
 
 //constructor
-// *MISSING OWNERID*
+// *MISSING CLIENTID Generation*
 	   public V1ClientInfo() {
 	   resultName = new JLabel();
 	   resultEmail = new JLabel();
+	   resultPhoneN = new JLabel();
 	   
 	      createTxtFieldFName();
 	      createTxtFieldLName();
+	      createTxtPhoneN();
 	      createTxtEmail();
-	      createButtonCN();
-	      createButtonEmail();
+	      createButtonAddUser();
 	      createPanel();
 
 	      setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -87,39 +90,35 @@ public class V1ClientInfo extends JFrame {
 		      lNameField = new JTextField(FIELD_WIDTH);
 		      } 
 
-//Create Text Box for LicenseNum 
+//Create Text Box for Email 
 	   private void createTxtEmail(){
-		      EmailLabel = new JLabel("Email: ");
+		      emailLabel = new JLabel("Email: ");
 		      final int FIELD_WIDTH = 15;
-		      EmailField = new JTextField(FIELD_WIDTH);}
+		      emailField = new JTextField(FIELD_WIDTH);}
+	   
+//Create Text Box for Phone Num
+	   private void createTxtPhoneN(){
+		      phoneNumLabel = new JLabel("Phone Number: ");
+		      final int FIELD_WIDTH = 10;
+		      phoneNumField = new JTextField(FIELD_WIDTH);}
 
 //Create Button 
-	   private void createButtonCN() {
-	      buttonCN = new JButton("Confirm Name");
+	   private void createButtonAddUser() {
+	      buttonAddUser = new JButton("Confirm Information");
 	      
 	      ActionListener listener = new AddNameListener();
-	      buttonCN.addActionListener(listener);}
+	      buttonAddUser.addActionListener(listener);}
 	   
 //implement results
 	   public class AddNameListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
 				String fN = fNameField.getText();
 				String lN = lNameField.getText();
+				String phoneN = phoneNumField.getText();
+				String email = emailField.getText();
 						
-			    resultName.setText("Full Name:" + fN + " " + lN);}    
-			 }
-	   
-//Create Button Email
-	   private void createButtonEmail() {
-		      buttonEmail = new JButton("Confirm Email");
-		      
-		      ActionListener listener = new AddEmailListener();
-		      buttonEmail.addActionListener(listener);}
-
-	   public class AddEmailListener implements ActionListener {
-			 public void actionPerformed(ActionEvent event){
-				String email = EmailField.getText();
-			
+			    resultName.setText("Name:" + fN + " " + lN);
+			    resultPhoneN.setText("Phone Number: " + phoneN);
 			    resultEmail.setText("Email: " + email);}    
 			 }
 	   
@@ -130,12 +129,14 @@ public class V1ClientInfo extends JFrame {
 	      panel.add(fNameField);
 	      panel.add(lNameLabel);
 	      panel.add(lNameField);
-	      panel.add(EmailLabel);
-	      panel.add(EmailField);
-	      panel.add(buttonCN);
-	      panel.add(buttonEmail);
+	      panel.add(emailLabel);
+	      panel.add(emailField);
+	      panel.add(phoneNumLabel);
+	      panel.add(phoneNumField);
+	      panel.add(buttonAddUser);
 	      panel.add(resultName); 
 	      panel.add(resultEmail);
+	      panel.add(resultPhoneN);
 	
 	      // adds to current object
 	      add(panel);} 
