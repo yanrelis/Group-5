@@ -1,17 +1,12 @@
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.time.LocalDate;
+import java.util.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 
 public class V1ClientInfo extends JFrame {
@@ -26,6 +21,7 @@ public class V1ClientInfo extends JFrame {
 	   private JTextField phoneNumField;
 	   private JLabel emailLabel;
 	   private JTextField emailField;
+	   private JButton buttonConfirmInfo;
 	   private JButton buttonAddUser;
 	   private JLabel resultName;	
 	   private JLabel resultEmail;
@@ -35,6 +31,7 @@ public class V1ClientInfo extends JFrame {
 	   private static String lName = ""; 
 	   private static String phoneN =""; 
 	   private static String email = ""; 
+	   private static ArrayList<V1ClientInfo> clientInfo;
 	   
 	   public static String getfName() {
 			return fName;}
@@ -61,6 +58,13 @@ public class V1ClientInfo extends JFrame {
 			Email= email;}
 
 //constructor
+		public V1ClientInfo(String firstN, String lastN, String phoneNum, String emailAddress){
+			firstN = fName; 
+			lastN = lName; 
+			phoneNum = phoneN; 
+			emailAddress = email; 
+		}
+		
 // *MISSING CLIENTID Generation*
 	   public V1ClientInfo() {
 	   resultName = new JLabel();
@@ -71,6 +75,7 @@ public class V1ClientInfo extends JFrame {
 	      createTxtFieldLName();
 	      createTxtPhoneN();
 	      createTxtEmail();
+	      createButtonConfirmInfo();
 	      createButtonAddUser();
 	      createPanel();
 
@@ -103,14 +108,14 @@ public class V1ClientInfo extends JFrame {
 		      phoneNumField = new JTextField(FIELD_WIDTH);}
 
 //Create Button 
-	   private void createButtonAddUser() {
-	      buttonAddUser = new JButton("Confirm Information");
+	   private void createButtonConfirmInfo() {
+	      buttonConfirmInfo= new JButton("Confirm Information");
 	      
-	      ActionListener listener = new AddNameListener();
-	      buttonAddUser.addActionListener(listener);}
+	      ActionListener listener = new ConfirmInfoListener();
+	      buttonConfirmInfo.addActionListener(listener);}
 	   
 //implement results
-	   public class AddNameListener implements ActionListener {
+	   public class ConfirmInfoListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
 				String fN = fNameField.getText();
 				String lN = lNameField.getText();
@@ -121,6 +126,32 @@ public class V1ClientInfo extends JFrame {
 			    resultPhoneN.setText("Phone Number: " + phoneN);
 			    resultEmail.setText("Email: " + email);}    
 			 }
+	   
+//Create Button 
+	   private void createButtonAddUser() {
+	      buttonAddUser= new JButton("Add User");
+	      
+	      ActionListener listener = new AddUserListener();
+	      buttonAddUser.addActionListener(listener);}
+	   
+//implement results
+	   public class AddUserListener implements ActionListener {
+			 public void actionPerformed(ActionEvent event){
+				 	String fN = fNameField.getText();
+					String lN = lNameField.getText();
+					String phoneN = phoneNumField.getText();
+					String email = emailField.getText();
+
+//Is an arrayList necessary to print out to file???
+					V1ClientInfo user = new V1ClientInfo(fN,lN, phoneN, email);
+					clientInfo = new ArrayList<V1ClientInfo>();
+					clientInfo.add(user);}
+	   		}
+	   
+/* Tester
+ * for (int i=0; i<ownerInfo.size(); i++) {
+ * System.out.println(ownerInfo.get(i));}
+ * prints out array but needs to be converted toString()*/
 	   
 //create a panel
 	   private void createPanel(){
@@ -133,6 +164,7 @@ public class V1ClientInfo extends JFrame {
 	      panel.add(emailField);
 	      panel.add(phoneNumLabel);
 	      panel.add(phoneNumField);
+	      panel.add(buttonConfirmInfo);
 	      panel.add(buttonAddUser);
 	      panel.add(resultName); 
 	      panel.add(resultEmail);
