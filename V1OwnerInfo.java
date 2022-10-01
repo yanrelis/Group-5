@@ -29,10 +29,10 @@ public class V1OwnerInfo extends JFrame {
 	   private JLabel resultLicenseN;
 	   private JButton buttonLicense;
 
-	   private static String fName ="Ed";
-	   private static String lName = "Eddie"; 
+	   private static String fName ="";
+	   private static String lName = ""; 
 	   private static LocalDate Dob = LocalDate.of(2000,1,02);; 
-	   private static String LicenseNum = "0"; 
+	   private static String LicenseNum = ""; 
 	   
 	   public static String getfName() {
 			return fName;}
@@ -78,15 +78,13 @@ public class V1OwnerInfo extends JFrame {
 	   private void createTxtFieldFName(){
 	      fNameLabel = new JLabel("First Name: ");
 	      final int FIELD_WIDTH = 10;
-	      fNameField = new JTextField(FIELD_WIDTH);
-	      fNameField.setText("" + fName);} 
+	      fNameField = new JTextField(FIELD_WIDTH);} 
 
 //Create Text Box for Last Name
 	   private void createTxtFieldLName(){
 		      lNameLabel = new JLabel("Last Name: ");
 		      final int FIELD_WIDTH = 10;
-		      lNameField = new JTextField(FIELD_WIDTH);
-		      lNameField.setText("" + lName);} 
+		      lNameField = new JTextField(FIELD_WIDTH);} 
 
 //Create Text Box for LicenseNum 
 	   private void createTxtLicenseN(){
