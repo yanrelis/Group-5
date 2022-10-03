@@ -1,4 +1,3 @@
-package jframe;
 
 public class MainType {
 	 public static void main(String[] args) {  

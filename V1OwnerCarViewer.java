@@ -14,7 +14,7 @@ public class V1OwnerCarViewer implements ActionListener {
 	private JPanel mainpanel;
 	private JLabel instructions, vehicleVIN, vehicleYear, vehicleMake, vehicleModel, vehicleColor, vehicleAvailability, vehicleDamageNotes, savedMessage;
 	private JTextField inVIN, inYear, inMake, inModel, inColor, inAvailability, inDamageNotes;
-	private JButton saveButton;
+	private JButton saveButton, backButton;
 	
 	// --------------------------------------------------
 	// This constructor creates the GUI that allows information about a specified vehicle to be entered and stored.
@@ -39,6 +39,7 @@ public class V1OwnerCarViewer implements ActionListener {
 		inDamageNotes = new JTextField(10);
 		saveButton = new JButton("Store");
 		savedMessage = new JLabel("");
+		backButton = new JButton("Back");
 		
 		frame.setSize(640, 360);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,6 +89,10 @@ public class V1OwnerCarViewer implements ActionListener {
 		saveButton.addActionListener(this);
 		mainpanel.add(saveButton);
 		
+		backButton.setBounds(550, 250, 65, 25);
+		backButton.addActionListener(new backButton());
+		mainpanel.add(backButton);
+		
 		savedMessage.setBounds(450, 150, 150, 100);
 		mainpanel.add(savedMessage);
 		
@@ -108,6 +113,14 @@ public class V1OwnerCarViewer implements ActionListener {
 		System.out.println(newVehicle.getVehicleInfo());
 		
 		savedMessage.setText("<html>The entered information has been successfully stored.</html>");
+	}
+	
+	public class backButton implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) {
+			frame.dispose();
+			WelcomePage welcome = new WelcomePage();
+		}
 	}
 	
 	public static void main(String[] args)
