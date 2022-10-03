@@ -115,6 +115,8 @@ public class V1OwnerCarViewer implements ActionListener {
 		savedMessage.setText("<html>The entered information has been successfully stored.</html>");
 	}
 	
+	// --------------------------------------------------
+	// This class and method are required to allow the "back" button to function properly.
 	public class backButton implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) {
