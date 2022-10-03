@@ -18,6 +18,7 @@ public class V1OwnerCar {
 	private String vehicleColor;
 	private int vehicleAvailability;
 	private String vehicleDamageNotes;
+	private int ownerID;
 	
 	// --------------------------------------------------
 	// This constructor method creates an object that stores all of the information pertaining to the vehicle entered.
@@ -30,6 +31,7 @@ public class V1OwnerCar {
 		this.vehicleColor = vehicleColor;
 		this.vehicleAvailability = vehicleAvailability;
 		this.vehicleDamageNotes = vehicleDamageNotes;
+		ownerID = (int) (Math.random() * 1000000);
 	}
 	
 	// --------------------------------------------------
@@ -128,6 +130,27 @@ public class V1OwnerCar {
 	public String getVehicleDamageNotes()
 	{
 		return vehicleDamageNotes;
+	}
+	
+	// --------------------------------------------------
+	// This method sets the ID of the owner of the specified vehicle.
+	public void setOwnerID(int ownerID)
+	{
+		this.ownerID = ownerID;
+	}
+	
+	// --------------------------------------------------
+	// This method chooses a random number to set as the ID of the owner of the specified vehicle.
+	public void generateOwnerID()
+	{
+		ownerID = (int) (Math.random() * 1000000);
+	}
+	
+	// --------------------------------------------------
+	// This method returns the ID of the owner of the specified vehicle.
+	public int getOwnerID()
+	{
+		return ownerID;
 	}
 	
 	// --------------------------------------------------
