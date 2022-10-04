@@ -1,3 +1,9 @@
+/* Project: Project Milestone 2: GUI
+* Class: WelcomePage.java
+* Author: Matthew Lardi
+* Date: October 3, 2022
+* This class is used to create the opening GUI to welcome a user to the system.
+*/ 
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
