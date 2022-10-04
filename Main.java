@@ -67,7 +67,7 @@ public void actionPerformed(ActionEvent e) {
 		Main ob = new Main();  
 		ob.frame.setVisible(true);  
 		frame.dispose();  
-		
+	
 	}
 }
 }
