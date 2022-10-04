@@ -19,7 +19,7 @@ public class WelcomePage implements ActionListener {
 	// initialize JFrame
 	JFrame frame = new JFrame();
 
-	//
+	// access modifier for variables/constructors
 	private JButton Owner;
 	private JButton Client;
 	private JLabel labelHeader;
@@ -27,7 +27,7 @@ public class WelcomePage implements ActionListener {
 
 	private JPanel panel;
 
-	// set parameters of JFrame
+	// set parameters of Welcome JFrame
 	public WelcomePage() {
 
 		frame.setSize(FrameWidth, FrameHeight);
@@ -36,11 +36,11 @@ public class WelcomePage implements ActionListener {
 		frame.setTitle("Vehicular Cloud Real-Time System");
 
 		labelHeader = new JLabel("Welcome Back!");
-		labelHeader.setBounds(175, 10, 300, 30); // set location of label
+		labelHeader.setBounds(175, 10, 300, 30); // set bounds of label
 		labelHeader.setFont(new Font("Nunito", Font.BOLD, 35));
 
 		labelOption = new JLabel("Choose an option below to continue:");
-		labelOption.setBounds(160, 100, 300, 30); // Set location of label
+		labelOption.setBounds(160, 100, 300, 30); // Set bounds of label
 		labelOption.setFont(new Font("Nunito", Font.ITALIC, 16));
 
 		ImageIcon image = new ImageIcon("VCC.png");
@@ -91,7 +91,7 @@ public class WelcomePage implements ActionListener {
 		panel.add(labelHeader);
 		panel.add(labelOption);
 		panel.setBackground(new Color(0x057abc)); // background color
-		// adds to current object
+		// adds to object
 		frame.add(panel);
 
 	}
