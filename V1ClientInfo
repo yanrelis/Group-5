@@ -1,5 +1,5 @@
 //Katherine's code with a file printer that aves client information
-
+//Edited by Santiago Bejarano to include file printing as initial storage of Client Information
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -152,14 +152,15 @@ public class V1ClientInfo extends JFrame {
 					String phoneN = phoneNumField.getText();
 					String email = emailField.getText();
 
-//Is an arrayList necessary to print out to file???
 					V1ClientInfo user = new V1ClientInfo(fN,lN, phoneN, email);
 					clientInfo = new ArrayList<V1ClientInfo>();
 					clientInfo.add(user);
 			 
+		//-------------------------------------------------------------------
+		//This portion of the code creates and implements a file printer that stores client information in a file
+			 
 			 clientFile.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
-											//if it does not exist
-
+							      //if it does not exist
 			 try{ //catch exception when printing into file
 				 PrintWriter fileWriter = new PrintWriter(new FileWriter (clientFile, true)); //create writer
 
