@@ -82,11 +82,12 @@ public class WelcomePage implements ActionListener {
 	}
 
 	//	linking GUI classes/buttons to each other
-	public void actionPerformed(ActionEvent event) {
-		if (event.getSource() == Client) {
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == Client) {
 			frame.dispose();
 			V1ClientInfo client = new V1ClientInfo();
-		} else if (event.getSource() == Owner) {
+		} 
+		else if (e.getSource() == Owner) {
 			frame.dispose();
 			V1OwnerCar owner = new V1OwnerCar();
 		}
