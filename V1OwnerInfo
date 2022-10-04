@@ -1,5 +1,5 @@
 //Katherine's code with file printer that saves owner info
-
+//Edited by Santiago Bejarano to include file printing as initial storage of Owner Information
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -178,16 +178,17 @@ public class V1OwnerInfo extends JFrame {
 					String email = emailField.getText();
 					String lNum = lNumField.getText();
 
-//Is an arrayList necessary to print out to file???
 					V1OwnerInfo user = new V1OwnerInfo(fN,lN, phoneN, email, lNum);
 					ownerInfo = new ArrayList<V1OwnerInfo>();
 					ownerInfo.add(user);
-					ownerFile.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
-						//if it does not exist
 					
-					try{ //catch exception when printing into file
+				//---------------------------------------------
+				//This portion of the code creates and implements a file printer within action listener to store information
+					ownerFile.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
+									    //if it does not exist
+					
+					try{ 	//catch exception when printing into file
 						PrintWriter fileWriter = new PrintWriter(new FileWriter (ownerFile, true)); //create writer
-						
 						
 						fileWriter.println("Name: "+fN+" "+lN); //get information inputed into program and print into file
 						fileWriter.println("Phone number: "+phoneN);
