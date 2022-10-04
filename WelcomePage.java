@@ -5,10 +5,10 @@
 * This class is used to create the opening GUI to welcome a user to the system.
 */ 
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class WelcomePage implements ActionListener {
 
@@ -16,18 +16,17 @@ public class WelcomePage implements ActionListener {
 	final int FrameWidth = 600;
 	final int FrameHeight = 400;
 
-	// initialize JFrame
-	JFrame frame = new JFrame();
-
 	// access modifier for variables/constructors
 	private JButton Owner;
 	private JButton Client;
 	private JLabel labelHeader;
 	private JLabel labelOption;
-
 	private JPanel panel;
 
-	// set parameters of Welcome JFrame
+	// initialize JFrame
+		JFrame frame = new JFrame();
+	
+	// set parameters of JFrame
 	public WelcomePage() {
 
 		frame.setSize(FrameWidth, FrameHeight);
@@ -35,16 +34,15 @@ public class WelcomePage implements ActionListener {
 		frame.setFocusable(true);
 		frame.setTitle("Vehicular Cloud Real-Time System");
 
+		// welcome label
 		labelHeader = new JLabel("Welcome Back!");
-		labelHeader.setBounds(175, 10, 300, 30); // set bounds of label
+		labelHeader.setBounds(175, 10, 300, 30); // set location of label
 		labelHeader.setFont(new Font("Nunito", Font.BOLD, 35));
 
+		// label option parameters
 		labelOption = new JLabel("Choose an option below to continue:");
-		labelOption.setBounds(160, 100, 300, 30); // Set bounds of label
+		labelOption.setBounds(160, 100, 300, 30); // Set location of label
 		labelOption.setFont(new Font("Nunito", Font.ITALIC, 16));
-
-		ImageIcon image = new ImageIcon("VCC.png");
-		frame.setIconImage(image.getImage());
 
 		ButtonOwner();
 		ClientButton();
@@ -52,21 +50,10 @@ public class WelcomePage implements ActionListener {
 		frame.setVisible(true);
 	}
 
-	public void actionPerformed(ActionEvent event) {
-		if (event.getSource() == Client) {
-			frame.dispose();
-			ClientPage client = new ClientPage();
-		} else if (event.getSource() == Owner) {
-			frame.dispose();
-			OwnerLogin login = new OwnerLogin();
-		}
-	}
-
 	// Create Owner Button
 	private void ButtonOwner() {
-		Owner = new JButton("Owner");
-
-		Owner.setBounds(320, 190, 140, 25); // Set location of button\
+		Owner = new JButton("Owner"); //setting title & bounds of button
+		Owner.setBounds(320, 190, 140, 25); 
 		Owner.setBackground(new Color(0, 25, 25));
 		Owner.addActionListener(this);
 
@@ -74,26 +61,35 @@ public class WelcomePage implements ActionListener {
 
 	// Create Client Button
 	private void ClientButton() {
-		Client = new JButton("Client");
-
-		Client.setBounds(160, 190, 140, 25); // Set location of button
+		Client = new JButton("Client"); //setting title & bounds of button
+		Client.setBounds(160, 190, 140, 25); 
 		Client.setBackground(new Color(0, 25, 25));
 		Client.addActionListener(this);
 	}
 
-	// create a panel to show the labels/buttons on GUI
+	// panel that displays each attribute to GUI
 	private void createPanel() {
 		panel = new JPanel();
-		//
+		
 		panel.setLayout(null);
 		panel.add(Owner);
 		panel.add(Client);
 		panel.add(labelHeader);
 		panel.add(labelOption);
-		panel.setBackground(new Color(0x057abc)); // background color
-		// adds to object
+		panel.setBackground(new Color(0x057abc)); 
 		frame.add(panel);
 
+	}
+
+	//	linking GUI classes/buttons to each other
+	public void actionPerformed(ActionEvent event) {
+		if (event.getSource() == Client) {
+			frame.dispose();
+			V1ClientInfo client = new V1ClientInfo();
+		} else if (event.getSource() == Owner) {
+			frame.dispose();
+			V1OwnerCar owner = new V1OwnerCar();
+		}
 	}
 
 }
