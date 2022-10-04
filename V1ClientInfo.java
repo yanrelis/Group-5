@@ -20,6 +20,7 @@ public class V1ClientInfo extends JFrame {
 //create file
 	File clientFile = new File("SavedInfo\\ClientInfo.txt"); 
 	
+	public static JFrame clientFrame; 
 	private static final int FRAME_WIDTH = 500;
 	private static final int FRAME_HEIGHT = 400;
 	   
@@ -227,7 +228,7 @@ System.out.println("Client information saved"); //print into console when info w
 	      add(panel);} 
 	   
 	   public static void main(String[] args) {
-			JFrame frame = new V1ClientInfo();
+			 clientFrame = new V1ClientInfo();
 			
 			
 		      
@@ -238,8 +239,8 @@ System.out.println("Client information saved"); //print into console when info w
 		      //JFrame.DISPOSE_ON_CLOSE — Dispose of the frame object, but keep the application running.
 		      //JFrame.DO_NOTHING_ON_CLOSE — Ignore the click.
 
-		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		      frame.setVisible(true);
+		      clientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		      clientFrame.setVisible(true);
 		   }
 	   
 	
