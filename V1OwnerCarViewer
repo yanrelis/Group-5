@@ -5,6 +5,8 @@
 * This class is used to create a GUI that allows the information about a specified vehicle to be entered and stored.
 */ 
 
+////Edited by Santiago Bejarano to include file printing as initial storage of Car information
+
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -119,6 +121,7 @@ public class V1OwnerCarViewer implements ActionListener {
 		V1OwnerCar newVehicle = new V1OwnerCar(newVIN, newYear, newMake, newModel, newColor, newAvailability, newDamageNotes);
 		System.out.println(newVehicle.getVehicleInfo());
 		
+		//--------------------------------------------------
 		//Added a file printer that stores vehicle information
 		File file = new File("SavedInfo\\CarInfo.txt");  //create new file where info will be stored 
 		file.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
