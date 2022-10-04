@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 
 
 public class V1OwnerInfo extends JFrame {
+	   public static JFrame ownerFrame;
 	   private static final int FRAME_WIDTH = 500;
 	   private static final int FRAME_HEIGHT = 400;
 	   
@@ -232,7 +233,8 @@ public class V1OwnerInfo extends JFrame {
 	   
 	   public class AddCarListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
-				 	//calls to Andrew's class Owner Car
+				 ownerFrame.dispose();
+				 new V1OwnerCarViewer();
 			 }}
 //create a panel
 	   private void createPanel(){
@@ -263,7 +265,7 @@ public class V1OwnerInfo extends JFrame {
 	      add(panel);} 
 	   
 	   public static void main(String[] args) {
-			JFrame frame = new V1OwnerInfo();
+			ownerFrame = new V1OwnerInfo();
 			
 		      
 		      //The setDefaultCloseOperation() method is used to specify one of several options for the close button. 
@@ -273,8 +275,8 @@ public class V1OwnerInfo extends JFrame {
 		      //JFrame.DISPOSE_ON_CLOSE — Dispose of the frame object, but keep the application running.
 		      //JFrame.DO_NOTHING_ON_CLOSE — Ignore the click.
 
-		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		      frame.setVisible(true);
+		      ownerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		      ownerFrame.setVisible(true);
 		   }
 	
 
