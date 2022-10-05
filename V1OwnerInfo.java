@@ -1,11 +1,26 @@
+/* Project: Project Milestone 2: GUI
+* Class: V1OwnerInfo.java
+* Author: Katherine Dumancela
+* Date: September 29st, 2022
+* This class is used to create objects pertaining to each individual vehicle and stores the
+* VIN numbers, the year the vehicle was made, the makes and models of each vehicle, the color
+* of the vehicle, the length of time the vehicle is available, and any notes an inspector may
+* have regarding damage present on the vehicle. This class also contains a method that returns
+* all of the information recorded about the specified vehicle in a few sentences.
+*/ 
+
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import java.util.*; 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,18 +30,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-public class V1OwnerInfo extends JFrame {
-	   public static JFrame ownerFrame;
-	   private static final int FRAME_WIDTH = 500;
-	   private static final int FRAME_HEIGHT = 400;
-	   
+public class V1OwnerInfo extends javax.swing.JFrame {
+
+	//	   
 	   File ownerFile = new File("SavedInfo\\OwnerInfo.txt");  //create new file where info will be stored 
 	   
+//---------------------------------------------------------------------
+	//
+	   public static JPanel ownerPanel = new JPanel();
 	   private JLabel fNameLabel, lNameLabel, lNumLabel, resultFName, resultLName,
-	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultLicenseN, resultID, IDlabel;
+	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultLicenseN, resultID, IDlabel, instructions;
 	   private JTextField fNameField, lNameField, lNumField, emailField, phoneNumField;
 	   private JButton buttonConfirmInfo, buttonAddUser, buttonAddCar, buttonBack; 
 
+	   private static final int FRAME_WIDTH = 500;
+	   private static final int FRAME_HEIGHT = 400;
+	  
 	   private static String fName ="";
 	   private static String lName = ""; 
 	   private static String email = ""; 
@@ -34,7 +53,8 @@ public class V1OwnerInfo extends JFrame {
 	   private static String phoneNum= ""; 
 	   private static String ownerID = "";
 	   
-	   
+ //---------------------------------------------------------------------
+	//   
 	   public static String getfName() {
 			return fName;}
 
@@ -73,7 +93,8 @@ public class V1OwnerInfo extends JFrame {
 			V1OwnerInfo.ownerID = ownerID;
 		}
 
-		//constructor
+//---------------------------------------------------------------------
+	//CONSTRUCTOR	
 		public V1OwnerInfo(String firstN, String lastN, String phoneN, String emailAddress, String licenseN){
 			firstN = fName; 
 			lastN = lName; 
@@ -82,8 +103,11 @@ public class V1OwnerInfo extends JFrame {
 			licenseN = licenseNum;
 		}
 		
-// *MISSING OWNERID*
+//---------------------------------------------------------------------
+	//generate final panel with all the JLabels/TxtFields/Buttons
 	   public V1OwnerInfo() {
+		   instructions = new JLabel("<html>Welcome to Owner Registration. </html>");
+		   instructions.setBounds(10, 10, 620, 35);
 	   resultFName = new JLabel();
 	   resultLName = new JLabel();
 	   resultEmail = new JLabel();
@@ -106,23 +130,26 @@ public class V1OwnerInfo extends JFrame {
 
 	      setSize(FRAME_WIDTH, FRAME_HEIGHT);
 	   }
-	   
-//Create Text Box for First Name
+
+//---------------------------------------------------------
+	   //Create Text Box for First Name
 	   private void createTxtFieldFName(){
 	      fNameLabel = new JLabel("First Name: ");
 	      final int FIELD_WIDTH = 10;
 	      fNameField = new JTextField(FIELD_WIDTH);
 	      fNameLabel.setBounds(10, 50, 105, 25);
 	      fNameField.setBounds(115, 50, 155, 25);} 
-
+	   
+//---------------------------------------------------------
 //Create Text Box for Last Name
 	   private void createTxtFieldLName(){
 		      lNameLabel = new JLabel("Last Name: ");
 		      final int FIELD_WIDTH = 10;
 		      lNameField = new JTextField(FIELD_WIDTH);
 		      lNameLabel.setBounds(10, 90, 105, 25);
-		      lNameField.setBounds(115, 90, 155, 25);
-			} 
+		      lNameField.setBounds(115, 90, 155, 25);} 
+
+//---------------------------------------------------------
 //Create Text Box for Phone Num 
 	   private void createTxtPhoneN(){
 		      phoneNumLabel = new JLabel("Phone Number: ");
@@ -130,16 +157,18 @@ public class V1OwnerInfo extends JFrame {
 		      phoneNumField = new JTextField(FIELD_WIDTH);
 		      phoneNumLabel.setBounds(10, 130, 105, 25);
 		      phoneNumField.setBounds(115, 130, 155, 25);}
-	   
-//Create Text Box for Email
+
+//---------------------------------------------------------
+	   //Create Text Box for Email
 	   private void createTxtEmail(){
 		      emailLabel = new JLabel("Email: ");
 		      final int FIELD_WIDTH = 15;
 		      emailField = new JTextField(FIELD_WIDTH);
 		      emailLabel.setBounds(10, 170, 105, 25);
 		      emailField.setBounds(115, 170, 155, 25);}
-	   
-//Create Text Box for LicenseNum 
+
+//---------------------------------------------------------
+	   //Create Text Box for LicenseNum 
 	   private void createTxtLicenseN(){
 		      lNumLabel = new JLabel("License Number: ");
 		      final int FIELD_WIDTH = 10;
@@ -153,15 +182,17 @@ public class V1OwnerInfo extends JFrame {
 	        String formatted = String.format("%06d", num);
 		return formatted; }
 
-//Create Button to Confirm Info
+//---------------------------------------------------------
+	   //Create Button to Confirm Info
 	   private void createButtonConfirmInfo() {
 	      buttonConfirmInfo = new JButton("Confirm Info");
 	      
 	      ActionListener listener = new ConfirmInfoListener();
 	      buttonConfirmInfo.addActionListener(listener);
-	      buttonConfirmInfo.setBounds(100, 310, 110, 25);}
+	      buttonConfirmInfo.setBounds(10, 250, 110, 25);}
 	   
-//implement results
+//---------------------------------------------------------
+	   //implement results on confirm info allows users to make changes in case they make a mistake
 	   public class ConfirmInfoListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
 				String fN = fNameField.getText();
@@ -171,26 +202,28 @@ public class V1OwnerInfo extends JFrame {
 				String lNum = lNumField.getText();
 						
 				resultFName.setText(fN);
-			    resultFName.setBounds(280, 50, 130, 25);
+			    resultFName.setBounds(275, 50, 130, 25);
 			    resultLName.setText(lN);
-			    resultLName.setBounds(280, 90, 130, 25);
+			    resultLName.setBounds(275, 90, 130, 25);
 			    resultPhoneN.setText(phoneN);
-			    resultPhoneN.setBounds(280, 130, 130, 25);
+			    resultPhoneN.setBounds(275, 130, 130, 25);
 			    resultEmail.setText(email);
-			    resultEmail.setBounds(280, 170, 130, 25);
+			    resultEmail.setBounds(275, 170, 130, 25);
 			    resultLicenseN.setText(lNum);
-			    resultLicenseN.setBounds(280, 210, 130, 25);}
+			    resultLicenseN.setBounds(275, 210, 160, 25);}
 			 }
-	    
-//Create Button to Add User
+
+//---------------------------------------------------------
+	   //Create Button to Add User
 	   private void createButtonAddUser() {
 	      buttonAddUser = new JButton("Add User");
 	      
 	      ActionListener listener = new AddUserListener();
 	      buttonAddUser.addActionListener(listener);
-	      buttonAddUser.setBounds(220, 310, 100, 25);}
-	   	
-//implement results
+	      buttonAddUser.setBounds(10, 310, 100, 25);}
+	   
+//---------------------------------------------------------   	
+	   //implement results on AddUser Button
 	   public class AddUserListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
 				 	String fN = fNameField.getText();
@@ -223,35 +256,46 @@ public class V1OwnerInfo extends JFrame {
 						e.printStackTrace();
 					}
 			 }}
-//Button Needed to Add Car  
+	   
+//---------------------------------------------------------
+	   //AddCar button will lead to OwnerCarViewer  
 	   private void createButtonAddCar() {
 		   buttonAddCar = new JButton("Add Car");
 		   ActionListener listener = new AddCarListener();
 		   buttonAddCar.addActionListener(listener);
 		   buttonAddCar.setBounds(335, 310, 100, 25);
 		   }
-	   
+
+	   //implement results on AddCar Button
 	   public class AddCarListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
-				 ownerFrame.dispose();
+				 JComponent comp = (JComponent) event.getSource();
+				  Window win = SwingUtilities.getWindowAncestor(comp);
+				  win.dispose();
 				 new V1OwnerCarViewer();
 			 }}
-//back button 
+	   
+//---------------------------------------------------------
+	   //back button to get back to home page
 	   private void createButtonBack() {
 		   buttonBack = new JButton("Back");
 		   ActionListener listener = new BackListener();
 		   buttonBack.addActionListener(listener);
-		   buttonBack.setBounds(300, 10, 100, 25);
+		   buttonBack.setBounds(335, 10, 100, 25);
 		   }
-	   
+
+	   //implement results on Back Button
 	   public class BackListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
-				 ownerFrame.dispose();
+				 JComponent comp = (JComponent) event.getSource();
+				  Window win = SwingUtilities.getWindowAncestor(comp);
+				  win.dispose();
 				 //Welcome FRAME
 				 new WelcomePage();
 			 }}
 	   
-//create a panel
+//---------------------------------------------------------------------	   
+	   //create a panel method that will add all JLabels/JFields/JButtons to the panel
 	   private void createPanel(){
 	      JPanel panel = new JPanel();
 	      panel.setLayout(null);
@@ -276,25 +320,18 @@ public class V1OwnerInfo extends JFrame {
 	      panel.add(resultLicenseN);
 	      panel.add(IDlabel);
 	      panel.add(resultID);
+	      panel.add(instructions);
 
 	      // adds to current object
 	      add(panel);} 
-	   
+
+//---------------------------------------------------------
+	   //invoke and run panel created in V1OwnerInfo
 	   public static void main(String[] args) {
-			ownerFrame = new V1OwnerInfo();
-			
-		      
-		      //The setDefaultCloseOperation() method is used to specify one of several options for the close button. 
-
-		      //JFrame.EXIT_ON_CLOSE — Exit the application.
-		      //JFrame.HIDE_ON_CLOSE — Hide the frame, but keep the application running.
-		      //JFrame.DISPOSE_ON_CLOSE — Dispose of the frame object, but keep the application running.
-		      //JFrame.DO_NOTHING_ON_CLOSE — Ignore the click.
-
-		      ownerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		      ownerFrame.setVisible(true);
-		   }
-	
-
-}
+		   java.awt.EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                new V1OwnerInfo();
+	                } });
+		      }
+	   }
 
