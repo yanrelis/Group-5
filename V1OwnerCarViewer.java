@@ -41,7 +41,7 @@ public class V1OwnerCarViewer implements ActionListener {
 		inModel = new JTextField(10);
 		vehicleColor = new JLabel("Vehicle Color");
 		inColor = new JTextField(10);
-		vehicleAvailability = new JLabel("Availability");
+		vehicleAvailability = new JLabel("Residency Time");
 		inAvailability = new JTextField(10);
 		vehicleDamageNotes = new JLabel("Damage Notes");
 		inDamageNotes = new JTextField(10);
