@@ -24,7 +24,7 @@ public class WelcomePage implements ActionListener {
 	private JPanel panel;
 
 	// initialize JFrame
-		JFrame frame = new JFrame();
+	 JFrame frame = new JFrame();
 	
 	// set parameters of JFrame
 	public WelcomePage() {
@@ -97,4 +97,9 @@ public class WelcomePage implements ActionListener {
 		frame.add(panel);
 
 	}
+	
+	 public static void main(String[] args) {  
+			// SystemFrame systemFrame = new SystemFrame();
+			 WelcomePage welcomePage = new WelcomePage();
+		 }
 }
