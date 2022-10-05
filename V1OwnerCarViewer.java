@@ -7,6 +7,12 @@
 
 import java.awt.event.*;
 import javax.swing.*;
+//added packages for file printing
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class V1OwnerCarViewer implements ActionListener {
 	
@@ -112,8 +118,33 @@ public class V1OwnerCarViewer implements ActionListener {
 		V1OwnerCar newVehicle = new V1OwnerCar(newVIN, newYear, newMake, newModel, newColor, newAvailability, newDamageNotes);
 		System.out.println(newVehicle.getVehicleInfo());
 		
-		savedMessage.setText("<html>The entered information has been successfully stored.</html>");
-	}
+		//--------------------------------------------------
+				//Added a file printer that stores vehicle information
+				File file = new File("SavedInfo\\CarInfo.txt");  //create new file where info will be stored 
+				file.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
+						     								//if it does not exist
+						    	 
+						     try{ //catch exception when printing into file
+						    	 PrintWriter fileWriter = new PrintWriter(new FileWriter (file, true)); //create writer
+						   	    	
+						   	    fileWriter.println("VIN Number: "+newVIN); //get information inputed into program and print into file
+						   	    fileWriter.println("Year: "+newYear);
+						   	    fileWriter.println("Make: "+newMake);
+						   	    fileWriter.println("Model: "+newModel);
+						   	    fileWriter.println("Color: "+newColor);
+						   	    fileWriter.println("Availability: "+newAvailability);
+						   	    fileWriter.println("Damage notes: "+newDamageNotes);
+						   	    fileWriter.flush();
+						   	    fileWriter.close(); //flush and close writer
+						   	    System.out.println("Car information stored"); //print into console when info was saved into file
+						   	    
+						   	} catch (IOException k) {
+						   	   k.printStackTrace();
+							 }
+				
+				savedMessage.setText("<html>The entered information has been successfully stored.</html>");
+			}
+			
 	
 	// --------------------------------------------------
 	// This class and method are required to allow the "back" button to function properly.
