@@ -4,6 +4,7 @@
 * Date: September 30th, 2022
 * This class 
 */ 
+//Edited by Santiago Bejarano to include file printing as initial storage of Client Information
 import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -29,8 +30,8 @@ import java.io.PrintWriter;
 
 public class V1ClientInfo extends javax.swing.JFrame {
 	
-//create file
-	File clientFile = new File("SavedInfo\\ClientInfo.txt"); 
+	 //create new file where info will be stored 
+	File clientFile = new File("SavedInfo\\ClientInfo.txt");
 	
 	public static JPanel clientPanel = new JPanel();
 	private static final int FRAME_WIDTH = 600;
@@ -197,26 +198,28 @@ public static String getClientID() {
 					
 					resultID.setText(clientID);
 					resultID.setBounds(280, 210, 130, 25);
-					
+				 
+		//-------------------------------------------------------------------------------------------------------
+		//This portion of the code creates and implements a file printer that stores client information in a file	
 					clientFile.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
 					//if it does not exist
 					
 
-try{ //catch exception when printing into file
-PrintWriter fileWriter = new PrintWriter(new FileWriter (clientFile, true)); //create writer
+				try{ //catch exception when printing into file
+					PrintWriter fileWriter = new PrintWriter(new FileWriter (clientFile, true)); //create writer
 
-fileWriter.println("Name: "+fN+" "+lN); //get information inputed into program and print into file
-fileWriter.println("Phone number: "+phoneN);
-fileWriter.println("Email: "+email);
-fileWriter.println("ClientID: " + clientID);
-fileWriter.flush();
-fileWriter.close(); //flush and close writer
-System.out.println("Client information saved"); //print into console when info was saved into file
+					fileWriter.println("Name: "+fN+" "+lN); //get information inputed into program and print into file
+					fileWriter.println("Phone number: "+phoneN);
+					fileWriter.println("Email: "+email);
+					fileWriter.println("ClientID: " + clientID);
+					fileWriter.flush();
+					fileWriter.close(); //flush and close writer
+					System.out.println("Client information saved"); //print into console when info was saved into file
 
-	} catch (IOException e) {
-		e.printStackTrace();
-	}}
-					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}}
+			}
 
 	 //back button 
 	   private void createButtonBack() {
