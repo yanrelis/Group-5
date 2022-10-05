@@ -89,7 +89,7 @@ public class WelcomePage implements ActionListener {
 		} 
 		else if (e.getSource() == Owner) {
 			frame.dispose();
-			//V1OwnerCar car = new V1OwnerCar();
+			V1OwnerCar car = new V1OwnerCar();
 		}
 
 	}
