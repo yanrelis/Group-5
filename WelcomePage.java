@@ -34,14 +34,14 @@ public class WelcomePage implements ActionListener {
 		frame.setFocusable(true);
 		frame.setTitle("Vehicular Cloud Real-Time System");
 
-		// welcome label
+		// welcome label parameters
 		labelHeader = new JLabel("Welcome Back!");
-		labelHeader.setBounds(175, 10, 300, 30); // set location of label
+		labelHeader.setBounds(175, 40, 300, 30); 
 		labelHeader.setFont(new Font("Nunito", Font.BOLD, 35));
 
 		// label option parameters
 		labelOption = new JLabel("Choose an option below to continue:");
-		labelOption.setBounds(160, 100, 300, 30); // Set location of label
+		labelOption.setBounds(160, 100, 300, 30); 
 		labelOption.setFont(new Font("Nunito", Font.ITALIC, 16));
 
 		ButtonOwner();
@@ -76,21 +76,27 @@ public class WelcomePage implements ActionListener {
 		panel.add(Client);
 		panel.add(labelHeader);
 		panel.add(labelOption);
-		panel.setBackground(new Color(0x057abc)); 
+		panel.setBackground(new Color(0xe06666)); 
 		frame.add(panel);
 
 	}
 
 	//	linking GUI classes/buttons to each other
-	public void actionPerformed(ActionEvent e) {
+	public void ActionPreformed(ActionEvent e) {
 		if (e.getSource() == Client) {
 			frame.dispose();
 			V1ClientInfo client = new V1ClientInfo();
 		} 
 		else if (e.getSource() == Owner) {
 			frame.dispose();
-			V1OwnerCar owner = new V1OwnerCar();
+			//V1OwnerCar car = new V1OwnerCar();
 		}
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 	}
 
 }
