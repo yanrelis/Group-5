@@ -8,6 +8,7 @@
 * have regarding damage present on the vehicle. This class also contains a method that returns
 * all of the information recorded about the specified vehicle in a few sentences.
 */ 
+//Edited by Santiago Bejarano to include file printing as initial storage of Owner Information
 import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -32,8 +33,8 @@ import java.io.PrintWriter;
 
 public class V1OwnerInfo extends javax.swing.JFrame {
 
-	//	   
-	   File ownerFile = new File("SavedInfo\\OwnerInfo.txt");  //create new file where info will be stored 
+	//create new file where info will be stored 	   
+	   File ownerFile = new File("SavedInfo\\OwnerInfo.txt");   
 	   
 //---------------------------------------------------------------------
 	//
@@ -235,9 +236,12 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 					
 					resultID.setText(ownerID);
 					resultID.setBounds(280, 250, 130, 25);
+				 
+				 //---------------------------------------------
+				//This portion of the code creates and implements a file printer within action listener to store information
 					
 					ownerFile.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
-						//if it does not exist
+									    //if it does not exist
 					
 					try{ //catch exception when printing into file
 						PrintWriter fileWriter = new PrintWriter(new FileWriter (ownerFile, true)); //create writer
