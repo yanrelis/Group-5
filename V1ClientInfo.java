@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import V1OwnerInfo.BackListener;
 
 import java.io.File;
 import java.io.FileReader;
