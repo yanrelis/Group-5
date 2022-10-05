@@ -1,6 +1,6 @@
 /* Project: Project Milestone 2: GUI
 * Class: ClientInfo.java
-* Author: Yanelis
+* Author: Yanelis Cruceta
 * Date: September 30th, 2022
 * This class will ask the user to input thier information such as first name, last name, email, and phone number.
 The confirm button will demonstrate the information to the user and you can change it as many times needed until you click add user.
