@@ -8,7 +8,7 @@
 * have regarding damage present on the vehicle. This class also contains a method that returns
 * all of the information recorded about the specified vehicle in a few sentences.
 */ 
-
+import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +43,7 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 	   private JTextField fNameField, lNameField, lNumField, emailField, phoneNumField;
 	   private JButton buttonConfirmInfo, buttonAddUser, buttonAddCar, buttonBack; 
 
-	   private static final int FRAME_WIDTH = 500;
+	   private static final int FRAME_WIDTH = 600;
 	   private static final int FRAME_HEIGHT = 400;
 	  
 	   private static String fName ="";
@@ -321,6 +321,7 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 	      panel.add(IDlabel);
 	      panel.add(resultID);
 	      panel.add(instructions);
+	 panel.setBackground(new Color (0xfff8e9));
 
 	      // adds to current object
 	      add(panel);} 
