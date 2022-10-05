@@ -4,7 +4,7 @@
 * Date: September 30th, 2022
 * This class 
 */ 
-
+import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -255,6 +255,7 @@ System.out.println("Client information saved"); //print into console when info w
 	      clientPanel.add(resultPhoneN);
 	      clientPanel.add(resultID);
 	      clientPanel.add(instructions);
+		clientPanel.setBackground(new Color(0xffe9f8));
 	      clientPanel.setVisible(true);
 	
 	
