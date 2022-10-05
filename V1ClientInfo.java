@@ -211,7 +211,7 @@ public static String getClientID() {
 	      
 	      ActionListener listener = new AddUserListener();
 	      buttonAddUser.addActionListener(listener);
-	      buttonAddUser.setBounds(10, 310, 100, 25);}
+	      buttonAddUser.setBounds(10, 320, 100, 25);}
 	   
 //implement results
 	   public class AddUserListener implements ActionListener {
