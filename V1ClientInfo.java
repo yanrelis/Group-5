@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import V1OwnerInfo.BackListener;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,7 +30,7 @@ public class V1ClientInfo extends JFrame {
 	   private JLabel fNameLabel, lNameLabel, resultFName, resultLName,
 	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultID, IDlabel;
 	   private JTextField fNameField, lNameField, emailField, phoneNumField;
-	   private JButton buttonConfirmInfo, buttonAddUser; 
+	   private JButton buttonConfirmInfo, buttonAddUser, buttonBack; 
 
 	   private static String fName ="";
 	   private static String lName = ""; 
@@ -57,7 +60,7 @@ public class V1ClientInfo extends JFrame {
 			return email;}
 
 		public static void setEmail(String Email) {
-			Email= email;}
+			V1ClientInfo.email = Email;}
 
 public static String getClientID() {
 			return clientID;
@@ -75,7 +78,6 @@ public static String getClientID() {
 			emailAddress = email; 
 		}
 		
-// *MISSING CLIENTID Generation*
 	   public V1ClientInfo() {
 	   resultFName = new JLabel();
 	   resultLName = new JLabel();
@@ -85,17 +87,19 @@ public static String getClientID() {
 	   IDlabel = new JLabel("Client ID:"); 
 	   IDlabel.setBounds(220, 210, 130, 25);
 	
-	   
+	   		
 	      createTxtFieldFName();
 	      createTxtFieldLName();
 	      createTxtPhoneN();
 	      createTxtEmail();
 	      createButtonConfirmInfo();
 	      createButtonAddUser();
+	      createButtonBack();
 	      createPanel();
-
+	      
 	      setSize(FRAME_WIDTH, FRAME_HEIGHT);
 	   }
+	   
 	   
 //Create Text Box for First Name
 	   private void createTxtFieldFName(){
@@ -185,6 +189,7 @@ public static String getClientID() {
 					
 					clientFile.getParentFile().mkdirs(); //use getParentFile().mkdirs() to have location where file is stored created automatically
 					//if it does not exist
+					
 
 try{ //catch exception when printing into file
 PrintWriter fileWriter = new PrintWriter(new FileWriter (clientFile, true)); //create writer
@@ -201,6 +206,20 @@ System.out.println("Client information saved"); //print into console when info w
 		e.printStackTrace();
 	}}
 					}
+
+	 //back button 
+	   private void createButtonBack() {
+		   buttonBack = new JButton("Back");
+		   ActionListener listener = new BackListener();
+		   buttonBack.addActionListener(listener);
+		   buttonBack.setBounds(300, 10, 100, 25);
+		   }
+	   
+	   public class BackListener implements ActionListener {
+			 public void actionPerformed(ActionEvent event){
+				 clientFrame.dispose();
+				 new WelcomePage();
+			 }}
 	   
 //create a panel
 	   private void createPanel(){
@@ -217,6 +236,7 @@ System.out.println("Client information saved"); //print into console when info w
 	      panel.add(IDlabel);
 	      panel.add(buttonConfirmInfo);
 	      panel.add(buttonAddUser);
+	      panel.add(buttonBack);
 	      panel.add(resultFName); 
 	      panel.add(resultLName);
 	      panel.add(resultEmail);
@@ -228,21 +248,11 @@ System.out.println("Client information saved"); //print into console when info w
 	      add(panel);} 
 	   
 	   public static void main(String[] args) {
-			 clientFrame = new V1ClientInfo();
-			
-			
-		      
-		      //The setDefaultCloseOperation() method is used to specify one of several options for the close button. 
-
-		      //JFrame.EXIT_ON_CLOSE — Exit the application.
-		      //JFrame.HIDE_ON_CLOSE — Hide the frame, but keep the application running.
-		      //JFrame.DISPOSE_ON_CLOSE — Dispose of the frame object, but keep the application running.
-		      //JFrame.DO_NOTHING_ON_CLOSE — Ignore the click.
-
+			clientFrame = new V1ClientInfo();
+			clientFrame.setVisible(true);
 		      clientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		      clientFrame.setVisible(true);
 		   }
-	   
-	
+	    
 
 }
