@@ -1,3 +1,9 @@
+/* Project: Project Milestone 2: GUI
+Class: Main.java
+Author: Yanelis Cruceta
+Date: October 2, 2022
+This class allows a back button to be created and will switch you between one frame and another. */
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -10,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Main implements ActionListener{
-private JFrame frame; // 	MINE
+private JFrame frame; 
 private JButton button;  
 private JLabel labelHeader;
 private JLabel labelOption;
