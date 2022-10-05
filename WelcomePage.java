@@ -3,7 +3,7 @@
 * Author: Matthew Lardi
 * Date: October 3, 2022
 * This class is used to create the opening GUI to welcome a user to the system.
-*/ 
+*/
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class WelcomePage implements ActionListener {
+
+	//main method to run WelcomePage
+	public static void main(String[] args) {
+		// SystemFrame systemFrame = new SystemFrame();
+		WelcomePage welcomePage = new WelcomePage();
+	}
 
 	// set bounds for GUI
 	final int FrameWidth = 600;
@@ -24,8 +30,13 @@ public class WelcomePage implements ActionListener {
 	private JPanel panel;
 
 	// initialize JFrame
+<<<<<<< HEAD
 	 JFrame frame = new JFrame();
 	
+=======
+	JFrame frame = new JFrame();
+
+>>>>>>> 1dc088ef97d7e860c2bf59bb1be8e0610f023fe8
 	// set parameters of JFrame
 	public WelcomePage() {
 
@@ -36,12 +47,12 @@ public class WelcomePage implements ActionListener {
 
 		// welcome label parameters
 		labelHeader = new JLabel("Welcome Back!");
-		labelHeader.setBounds(175, 40, 300, 30); 
+		labelHeader.setBounds(175, 40, 300, 30);
 		labelHeader.setFont(new Font("Nunito", Font.BOLD, 35));
 
 		// label option parameters
 		labelOption = new JLabel("Choose an option below to continue:");
-		labelOption.setBounds(160, 100, 300, 30); 
+		labelOption.setBounds(160, 100, 300, 30);
 		labelOption.setFont(new Font("Nunito", Font.ITALIC, 16));
 
 		ButtonOwner();
@@ -52,22 +63,21 @@ public class WelcomePage implements ActionListener {
 
 	// linking WelcomePage to Client & Owner Frames
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == Client) {
-		frame.dispose();
-		V1ClientInfo clientFrame = new V1ClientInfo();
-		clientFrame.setVisible(true);
-	}
-		else if(e.getSource() == Owner) {
-		frame.dispose();
-		V1OwnerInfo ownerFrame = new V1OwnerInfo();
-		ownerFrame.setVisible(true);
+		if (e.getSource() == Client) {
+			frame.dispose();
+			V1ClientInfo clientFrame = new V1ClientInfo();
+			clientFrame.setVisible(true);
+		} else if (e.getSource() == Owner) {
+			frame.dispose();
+			V1OwnerInfo ownerFrame = new V1OwnerInfo();
+			ownerFrame.setVisible(true);
 		}
 	}
-	
+
 	// Create Owner Button
 	public void ButtonOwner() {
-		Owner = new JButton("Owner"); //setting title & bounds of button
-		Owner.setBounds(320, 190, 140, 25); 
+		Owner = new JButton("Owner"); // setting title & bounds of button
+		Owner.setBounds(320, 190, 140, 25);
 		Owner.setBackground(new Color(0, 25, 25));
 		Owner.addActionListener(this);
 
@@ -75,25 +85,23 @@ public class WelcomePage implements ActionListener {
 
 	// Create Client Button
 	public void ClientButton() {
-		Client = new JButton("Client"); //setting title & bounds of button
-		Client.setBounds(160, 190, 140, 25); 
+		Client = new JButton("Client"); // setting title & bounds of button
+		Client.setBounds(160, 190, 140, 25);
 		Client.setBackground(new Color(0, 25, 25));
 		Client.addActionListener(this);
-		
-		
-		
+
 	}
 
 	// panel that displays each attribute to GUI
 	private void createPanel() {
 		panel = new JPanel();
-		
+
 		panel.setLayout(null);
 		panel.add(Owner);
 		panel.add(Client);
 		panel.add(labelHeader);
 		panel.add(labelOption);
-		panel.setBackground(new Color(0xe06666)); 
+		panel.setBackground(new Color(0xe06666));
 		frame.add(panel);
 
 	}
