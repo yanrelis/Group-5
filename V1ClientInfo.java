@@ -2,7 +2,10 @@
 * Class: ClientInfo.java
 * Author: Yanelis
 * Date: September 30th, 2022
-* This class 
+* This class will ask the user to input thier information such as first name, last name, email, and phone number.
+The confirm button will demonstrate the information to the user and you can change it as many times needed until you click add user.
+This class will generate an ID for the user once they click add user.
+
 */ 
 //Edited by Santiago Bejarano to include file printing as initial storage of Client Information
 import java.awt.Color;
