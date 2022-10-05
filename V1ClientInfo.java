@@ -33,7 +33,7 @@ public class V1ClientInfo extends javax.swing.JFrame {
 	File clientFile = new File("SavedInfo\\ClientInfo.txt"); 
 	
 	public static JPanel clientPanel = new JPanel();
-	private static final int FRAME_WIDTH = 520;
+	private static final int FRAME_WIDTH = 600;
 	private static final int FRAME_HEIGHT = 400;
 	   
 	   private JLabel fNameLabel, lNameLabel, resultFName, resultLName,
