@@ -1,3 +1,10 @@
+/* Project: Project Milestone 2: GUI
+* Class: ClientInfo.java
+* Author: Yanelis
+* Date: September 30th, 2022
+* This class 
+*/ 
+
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.*;
 
 
 import java.io.File;
@@ -19,17 +27,17 @@ import java.io.PrintWriter;
 
 
 
-public class V1ClientInfo extends JFrame {
+public class V1ClientInfo extends javax.swing.JFrame {
 	
 //create file
 	File clientFile = new File("SavedInfo\\ClientInfo.txt"); 
 	
-	public static JFrame clientFrame; 
-	private static final int FRAME_WIDTH = 500;
+	public static JPanel clientPanel = new JPanel();
+	private static final int FRAME_WIDTH = 520;
 	private static final int FRAME_HEIGHT = 400;
 	   
 	   private JLabel fNameLabel, lNameLabel, resultFName, resultLName,
-	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultID, IDlabel;
+	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultID, IDlabel, instructions;
 	   private JTextField fNameField, lNameField, emailField, phoneNumField;
 	   private JButton buttonConfirmInfo, buttonAddUser, buttonBack; 
 
@@ -80,6 +88,8 @@ public static String getClientID() {
 		}
 		
 	   public V1ClientInfo() {
+	   instructions = new JLabel("<html>Welcome to Client Registration.</html>");
+	   instructions.setBounds(10, 10, 620, 35);
 	   resultFName = new JLabel();
 	   resultLName = new JLabel();
 	   resultEmail = new JLabel();
@@ -97,8 +107,8 @@ public static String getClientID() {
 	      createButtonAddUser();
 	      createButtonBack();
 	      createPanel();
-	      
 	      setSize(FRAME_WIDTH, FRAME_HEIGHT);
+	      
 	   }
 	   
 	   
@@ -147,7 +157,7 @@ public static String getClientID() {
 	      
 	      ActionListener listener = new ConfirmInfoListener();
 	      buttonConfirmInfo.addActionListener(listener);
-	      buttonConfirmInfo.setBounds(100, 310, 110, 25);}
+	      buttonConfirmInfo.setBounds(10, 250, 110, 25);}
 	   
 //implement results
 	   public class ConfirmInfoListener implements ActionListener {
@@ -158,13 +168,13 @@ public static String getClientID() {
 				String email = emailField.getText();
 						
 			    resultFName.setText(fN);
-			    resultFName.setBounds(280, 50, 130, 25);
+			    resultFName.setBounds(275, 50, 130, 25);
 			    resultLName.setText(lN);
-			    resultLName.setBounds(280, 90, 130, 25);
+			    resultLName.setBounds(275, 90, 130, 25);
 			    resultPhoneN.setText(phoneN);
-			    resultPhoneN.setBounds(280, 130, 130, 25);
+			    resultPhoneN.setBounds(275, 130, 130, 25);
 			    resultEmail.setText(email);
-			    resultEmail.setBounds(280, 170, 130, 25);}    
+			    resultEmail.setBounds(275, 170, 160, 25);}    
 			 
 			 }
 	   
@@ -174,7 +184,7 @@ public static String getClientID() {
 	      
 	      ActionListener listener = new AddUserListener();
 	      buttonAddUser.addActionListener(listener);
-	      buttonAddUser.setBounds(220, 310, 100, 25);}
+	      buttonAddUser.setBounds(10, 310, 100, 25);}
 	   
 //implement results
 	   public class AddUserListener implements ActionListener {
@@ -213,47 +223,50 @@ System.out.println("Client information saved"); //print into console when info w
 		   buttonBack = new JButton("Back");
 		   ActionListener listener = new BackListener();
 		   buttonBack.addActionListener(listener);
-		   buttonBack.setBounds(300, 10, 100, 25);
+		   buttonBack.setBounds(300, 310, 100, 25);
 		   }
 	   
 	   public class BackListener implements ActionListener {
 			 public void actionPerformed(ActionEvent event){
-				 clientFrame.dispose();
+				 JComponent comp = (JComponent) event.getSource();
+				  Window win = SwingUtilities.getWindowAncestor(comp);
+				  win.dispose();
 				 new WelcomePage();
 			 }}
 	   
 //create a panel
 	   private void createPanel(){
-	      JPanel panel = new JPanel();
-	      panel.setLayout(null);
-	      panel.add(fNameLabel);
-	      panel.add(fNameField);
-	      panel.add(lNameLabel);
-	      panel.add(lNameField);
-	      panel.add(emailLabel);
-	      panel.add(emailField);
-	      panel.add(phoneNumLabel);
-	      panel.add(phoneNumField);
-	      panel.add(IDlabel);
-	      panel.add(buttonConfirmInfo);
-	      panel.add(buttonAddUser);
-	      panel.add(buttonBack);
-	      panel.add(resultFName); 
-	      panel.add(resultLName);
-	      panel.add(resultEmail);
-	      panel.add(resultPhoneN);
-	      panel.add(resultID);
+	      clientPanel.setLayout(null);
+	      clientPanel.add(fNameLabel);
+	      clientPanel.add(fNameField);
+	      clientPanel.add(lNameLabel);
+	      clientPanel.add(lNameField);
+	      clientPanel.add(emailLabel);
+	      clientPanel.add(emailField);
+	      clientPanel.add(phoneNumLabel);
+	      clientPanel.add(phoneNumField);
+	      clientPanel.add(IDlabel);
+	      clientPanel.add(buttonConfirmInfo);
+	      clientPanel.add(buttonAddUser);
+	      clientPanel.add(buttonBack);
+	      clientPanel.add(resultFName); 
+	      clientPanel.add(resultLName);
+	      clientPanel.add(resultEmail);
+	      clientPanel.add(resultPhoneN);
+	      clientPanel.add(resultID);
+	      clientPanel.add(instructions);
+	      clientPanel.setVisible(true);
 	
 	
 	      // adds to current object
-	      add(panel);} 
+	      add(clientPanel);} 
 	   
 	   public static void main(String[] args) {
-			clientFrame = new V1ClientInfo();
-			clientFrame.setVisible(true);
-		      clientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		      clientFrame.setVisible(true);
-		   }
-	    
-
+		   java.awt.EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                new V1ClientInfo();
+	                }
+	
+	   });
+}
 }
