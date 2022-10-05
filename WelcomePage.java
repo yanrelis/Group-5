@@ -2,7 +2,8 @@
 * Class: WelcomePage.java
 * Author: Matthew Lardi
 * Date: October 3, 2022
-* This class is used to create the opening GUI to welcome a user to the system.
+* This class is used to create the opening GUI to welcome a user to the system. This is the
+* startup page where a user can access both Client & Owner registrations.
 */
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 
 public class WelcomePage implements ActionListener {
 
-	//main method to run WelcomePage
+	// main method to run WelcomePage
 	public static void main(String[] args) {
 		// SystemFrame systemFrame = new SystemFrame();
 		WelcomePage welcomePage = new WelcomePage();
@@ -58,19 +59,6 @@ public class WelcomePage implements ActionListener {
 		frame.setVisible(true);
 	}
 
-	// linking WelcomePage to Client & Owner Frames
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == Client) {
-			frame.dispose();
-			V1ClientInfo clientFrame = new V1ClientInfo();
-			clientFrame.setVisible(true);
-		} else if (e.getSource() == Owner) {
-			frame.dispose();
-			V1OwnerInfo ownerFrame = new V1OwnerInfo();
-			ownerFrame.setVisible(true);
-		}
-	}
-
 	// Create Owner Button
 	public void ButtonOwner() {
 		Owner = new JButton("Owner"); // setting title & bounds of button
@@ -101,6 +89,19 @@ public class WelcomePage implements ActionListener {
 		panel.setBackground(new Color(0xe06666));
 		frame.add(panel);
 
+	}
+	
+	// linking the client & owner buttons to the welcomePage
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == Client) {
+			frame.dispose();
+			V1ClientInfo clientFrame = new V1ClientInfo();
+			clientFrame.setVisible(true);
+		} else if (e.getSource() == Owner) {
+			frame.dispose();
+			V1OwnerInfo ownerFrame = new V1OwnerInfo();
+			ownerFrame.setVisible(true);
+		}
 	}
 	
 
