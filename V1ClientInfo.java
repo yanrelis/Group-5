@@ -38,8 +38,9 @@ public class V1ClientInfo extends javax.swing.JFrame {
 	private static final int FRAME_HEIGHT = 400;
 	   
 	   private JLabel fNameLabel, lNameLabel, resultFName, resultLName,
-	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultID, IDlabel, instructions;
-	   private JTextField fNameField, lNameField, emailField, phoneNumField;
+	   resultEmail, phoneNumLabel, emailLabel, resultPhoneN, resultID, IDlabel, instructions, 
+		jobLabel, jobResult, jobDlabel, jobDresult;
+	   private JTextField fNameField, lNameField, emailField, phoneNumField, jobField, jobDfield;
 	   private JButton buttonConfirmInfo, buttonAddUser, buttonBack; 
 
 	   private static String fName ="";
@@ -96,14 +97,18 @@ public static String getClientID() {
 	   resultEmail = new JLabel();
 	   resultPhoneN = new JLabel();
 	   resultID = new JLabel();
+	   jobResult = new JLabel();
+	   jobDresult = new JLabel();
 	   IDlabel = new JLabel("Client ID:"); 
-	   IDlabel.setBounds(220, 210, 130, 25);
+	   IDlabel.setBounds(220, 275, 130, 25);
 	
 	   		
 	      createTxtFieldFName();
 	      createTxtFieldLName();
 	      createTxtPhoneN();
 	      createTxtEmail();
+		createTxtJob();
+	      createTxtJobD();
 	      createButtonConfirmInfo();
 	      createButtonAddUser();
 	      createButtonBack();
@@ -145,6 +150,21 @@ public static String getClientID() {
 		      phoneNumField = new JTextField(FIELD_WIDTH);
 		      phoneNumLabel.setBounds(10, 130, 105, 25);
 		      phoneNumField.setBounds(115, 130, 155, 25);}
+ //Create Text Box for Job 
+	   private void createTxtJob(){
+		      jobLabel = new JLabel("Job: ");
+		      final int FIELD_WIDTH = 15;
+		      jobField = new JTextField(FIELD_WIDTH);
+		      jobLabel.setBounds(10, 210, 105, 25);
+		      jobField.setBounds(115, 210, 155, 25);}
+	   
+	   //Create Text Box for Job Duration
+	   private void createTxtJobD(){
+		      jobDlabel = new JLabel("Job Duration: ");
+		      final int FIELD_WIDTH = 15;
+		      jobDfield = new JTextField(FIELD_WIDTH);
+		      jobDlabel.setBounds(10, 250, 105, 25);
+		      jobDfield.setBounds(115, 250, 155, 25);}
 	   
 	   public String generateClientID() {
 		   	Random random = new Random();
@@ -158,7 +178,7 @@ public static String getClientID() {
 	      
 	      ActionListener listener = new ConfirmInfoListener();
 	      buttonConfirmInfo.addActionListener(listener);
-	      buttonConfirmInfo.setBounds(10, 250, 110, 25);}
+	      buttonConfirmInfo.setBounds(10, 290, 110, 25);}
 	   
 //implement results
 	   public class ConfirmInfoListener implements ActionListener {
@@ -167,6 +187,8 @@ public static String getClientID() {
 				String lN = lNameField.getText();
 				String phoneN = phoneNumField.getText();
 				String email = emailField.getText();
+				String job = jobField.getText();
+				String jobD = jobDfield.getText();
 						
 			    resultFName.setText(fN);
 			    resultFName.setBounds(275, 50, 130, 25);
@@ -175,7 +197,11 @@ public static String getClientID() {
 			    resultPhoneN.setText(phoneN);
 			    resultPhoneN.setBounds(275, 130, 130, 25);
 			    resultEmail.setText(email);
-			    resultEmail.setBounds(275, 170, 160, 25);}    
+			    resultEmail.setBounds(275, 170, 160, 25);
+			 jobResult.setText(job);
+			    jobResult.setBounds(275, 200, 160, 25);
+			    jobDresult.setText(jobD);
+			    jobDresult.setBounds(275, 240, 160, 25);}    
 			 
 			 }
 	   
@@ -194,10 +220,12 @@ public static String getClientID() {
 					String lN = lNameField.getText();
 					String phoneN = phoneNumField.getText();
 					String email = emailField.getText();
-					String clientID = generateClientID(); 
+					String job = jobField.getText();
+					String jobD = jobDfield.getText();
+				 String clientID = generateClientID(); 
 					
 					resultID.setText(clientID);
-					resultID.setBounds(280, 210, 130, 25);
+					resultID.setBounds(280, 275, 130, 25);
 				 
 		//-------------------------------------------------------------------------------------------------------
 		//This portion of the code creates and implements a file printer that stores client information in a file	
@@ -211,6 +239,8 @@ public static String getClientID() {
 					fileWriter.println("Name: "+fN+" "+lN); //get information inputed into program and print into file
 					fileWriter.println("Phone number: "+phoneN);
 					fileWriter.println("Email: "+email);
+					fileWriter.println("Job: "+ job);
+					fileWriter.println("Job Duration: "+ jobD);
 					fileWriter.println("ClientID: " + clientID);
 					fileWriter.flush();
 					fileWriter.close(); //flush and close writer
@@ -248,6 +278,10 @@ public static String getClientID() {
 	      clientPanel.add(emailField);
 	      clientPanel.add(phoneNumLabel);
 	      clientPanel.add(phoneNumField);
+		 clientPanel.add(jobField);
+	      clientPanel.add(jobLabel);
+	      clientPanel.add(jobDfield);
+	      clientPanel.add(jobDlabel);
 	      clientPanel.add(IDlabel);
 	      clientPanel.add(buttonConfirmInfo);
 	      clientPanel.add(buttonAddUser);
@@ -257,6 +291,8 @@ public static String getClientID() {
 	      clientPanel.add(resultEmail);
 	      clientPanel.add(resultPhoneN);
 	      clientPanel.add(resultID);
+		clientPanel.add(jobResult);
+	      clientPanel.add(jobDresult);
 	      clientPanel.add(instructions);
 		clientPanel.setBackground(new Color(0xffe9f8));
 	      clientPanel.setVisible(true);
