@@ -5,6 +5,7 @@
 * This class is used to create a GUI that allows the information about a specified vehicle to be entered and stored.
 */ 
 
+import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 //added packages for file printing
@@ -101,6 +102,7 @@ public class V1OwnerCarViewer implements ActionListener {
 		
 		savedMessage.setBounds(450, 150, 150, 100);
 		mainpanel.add(savedMessage);
+		mainpanel.setBackground(new Color(0xe9fff8));
 		
 		frame.setVisible(true);
 	}
