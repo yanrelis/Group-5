@@ -30,13 +30,10 @@ public class WelcomePage implements ActionListener {
 	private JPanel panel;
 
 	// initialize JFrame
-<<<<<<< HEAD
+
 	 JFrame frame = new JFrame();
 	
-=======
-	JFrame frame = new JFrame();
 
->>>>>>> 1dc088ef97d7e860c2bf59bb1be8e0610f023fe8
 	// set parameters of JFrame
 	public WelcomePage() {
 
@@ -106,8 +103,5 @@ public class WelcomePage implements ActionListener {
 
 	}
 	
-	 public static void main(String[] args) {  
-			// SystemFrame systemFrame = new SystemFrame();
-			 WelcomePage welcomePage = new WelcomePage();
-		 }
+
 }
