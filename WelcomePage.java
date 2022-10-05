@@ -50,8 +50,22 @@ public class WelcomePage implements ActionListener {
 		frame.setVisible(true);
 	}
 
+	// linking WelcomePage to Client & Owner Frames
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == Client) {
+		frame.dispose();
+		V1ClientInfo clientFrame = new V1ClientInfo();
+		clientFrame.setVisible(true);
+	}
+		else if(e.getSource() == Owner) {
+		frame.dispose();
+		V1OwnerInfo ownerFrame = new V1OwnerInfo();
+		ownerFrame.setVisible(true);
+		}
+	}
+	
 	// Create Owner Button
-	private void ButtonOwner() {
+	public void ButtonOwner() {
 		Owner = new JButton("Owner"); //setting title & bounds of button
 		Owner.setBounds(320, 190, 140, 25); 
 		Owner.setBackground(new Color(0, 25, 25));
@@ -60,11 +74,14 @@ public class WelcomePage implements ActionListener {
 	}
 
 	// Create Client Button
-	private void ClientButton() {
+	public void ClientButton() {
 		Client = new JButton("Client"); //setting title & bounds of button
 		Client.setBounds(160, 190, 140, 25); 
 		Client.setBackground(new Color(0, 25, 25));
 		Client.addActionListener(this);
+		
+		
+		
 	}
 
 	// panel that displays each attribute to GUI
@@ -80,23 +97,4 @@ public class WelcomePage implements ActionListener {
 		frame.add(panel);
 
 	}
-
-	//	linking GUI classes/buttons to each other
-	public void ActionPreformed(ActionEvent e) {
-		if (e.getSource() == Client) {
-			frame.dispose();
-			V1ClientInfo client = new V1ClientInfo();
-		} 
-		else if (e.getSource() == Owner) {
-			frame.dispose();
-			V1OwnerCar car = new V1OwnerCar();
-		}
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	}
-
 }
