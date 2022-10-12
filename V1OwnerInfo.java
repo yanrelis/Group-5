@@ -29,6 +29,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 
 public class V1OwnerInfo extends javax.swing.JFrame {
@@ -53,6 +54,7 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 	   private static String licenseNum = ""; 
 	   private static String phoneNum= ""; 
 	   private static String ownerID = "";
+	   private Timestamp time;
 	   
  //---------------------------------------------------------------------
 	//   
@@ -233,6 +235,7 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 					String email = emailField.getText();
 					String lNum = lNumField.getText();
 					String ownerID = generateOwnerID();
+					time = new Timestamp(System.currentTimeMillis());
 					
 					resultID.setText(ownerID);
 					resultID.setBounds(280, 250, 130, 25);
@@ -252,6 +255,7 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 						fileWriter.println("Email: "+email);
 						fileWriter.println("Licenseplate number: "+lNum);
 						fileWriter.println("OwnerID: " + ownerID);
+						fileWriter.println("Time: " + time + "\n");
 						fileWriter.flush();
 						fileWriter.close(); //flush and close writer
 						System.out.println("Owner information saved"); //print into console when info was saved into file
@@ -259,7 +263,14 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-			 }}
+					
+					fNameField.setText("");
+					lNameField.setText("");
+					phoneNumField.setText("");
+					emailField.setText("");
+					lNumField.setText("");
+			 }
+	   }
 	   
 //---------------------------------------------------------
 	   //AddCar button will lead to OwnerCarViewer  

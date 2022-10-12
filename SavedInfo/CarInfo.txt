@@ -1,0 +1,54 @@
+VIN Number: 123
+Year: 123
+Make: asdf
+Model: asdf
+Color: asdf
+Availability: 123
+Damage notes: 
+Time: 2022-10-05 17:03:17.255
+
+VIN Number: 234
+Year: 234
+Make: asdf
+Model: asdf
+Color: asdf
+Availability: 234
+Damage notes: 
+Time: 2022-10-05 17:04:36.058
+
+VIN Number: 345
+Year: 345
+Make: qwerty
+Model: qwerty
+Color: qwerty
+Availability: 345
+Damage notes: 
+Time: 2022-10-05 17:04:51.151
+
+VIN Number: 5235
+Year: 1999
+Make: asdf
+Model: qwert
+Color: qwerty
+Availability: 999
+Damage notes: 
+Time: 2022-10-12 14:12:45.165
+
+VIN Number: 1234567890
+Year: 123
+Make: asdf
+Model: asdf
+Color: asdf
+Availability: 12345
+Damage notes: 
+Time: 2022-10-12 14:35:52.74
+
+VIN Number: 1234567890
+Year: 1234
+Make: asdf
+Model: qwerty
+Color: zxcvb
+Availability: 12345
+Damage notes: 
+Time: 2022-10-12 14:41:50.126
+

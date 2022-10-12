@@ -28,6 +28,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 
 
@@ -51,6 +52,7 @@ public class V1ClientInfo extends javax.swing.JFrame {
 	   private static String phoneN =""; 
 	   private static String email = "";
 	   private static String clientID = ""; 
+	   private Timestamp time;
 	   
 	   public static String getfName() {
 			return fName;}
@@ -226,6 +228,7 @@ public static String getClientID() {
 					String job = jobField.getText();
 					String jobD = jobDfield.getText();
 				 String clientID = generateClientID(); 
+				 time = new Timestamp(System.currentTimeMillis());
 					
 					resultID.setText(clientID);
 					resultID.setBounds(280, 275, 130, 25);
@@ -245,14 +248,23 @@ public static String getClientID() {
 					fileWriter.println("Job: "+ job);
 					fileWriter.println("Job Duration: "+ jobD);
 					fileWriter.println("ClientID: " + clientID);
+					fileWriter.println("Time: " + time + "\n");
 					fileWriter.flush();
 					fileWriter.close(); //flush and close writer
 					System.out.println("Client information saved"); //print into console when info was saved into file
 
 				} catch (IOException e) {
 					e.printStackTrace();
-				}}
-			}
+				}
+				
+				fNameField.setText("");
+				lNameField.setText("");
+				phoneNumField.setText("");
+				emailField.setText("");
+				jobField.setText("");
+				jobDfield.setText("");
+			 }
+	   }
 
 	 //back button 
 	   private void createButtonBack() {

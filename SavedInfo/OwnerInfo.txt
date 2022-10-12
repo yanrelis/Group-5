@@ -1,0 +1,14 @@
+Name:  
+Phone number: 
+Email: 
+Licenseplate number: 
+OwnerID: 092759
+Time: 2022-10-12 14:12:22.865
+
+Name: first last
+Phone number: 1234567890
+Email: asdf@qwerty.org
+Licenseplate number: 0987654321
+OwnerID: 055624
+Time: 2022-10-12 14:41:29.041
+
