@@ -52,3 +52,39 @@ Availability: 12345
 Damage notes: 
 Time: 2022-10-12 14:41:50.126
 
+VIN Number: 123
+Year: 123
+Make: asdf
+Model: asdf
+Color: asdf
+Availability: 123
+Damage notes: 123
+Time: 2022-10-17 12:53:03.214
+
+VIN Number: 321
+Year: 321
+Make: asdf
+Model: qwerty
+Color: zxcvb
+Availability: 999
+Damage notes: 
+Time: 2022-10-17 12:55:21.919
+
+VIN Number: 123456789
+Year: 123456789
+Make: asdf
+Model: qwerty
+Color: zxcvb
+Availability: 987654321
+Damage notes: 
+Time: 2022-10-17 12:57:10.576
+
+VIN Number: 12345
+Year: 12345
+Make: asdf
+Model: qwerty
+Color: zxcvb
+Availability: 12345
+Damage notes: 
+Time: 2022-10-17 13:00:11.094
+

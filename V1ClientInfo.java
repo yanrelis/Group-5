@@ -14,12 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.*;
 
 
@@ -112,7 +106,7 @@ public static String getClientID() {
 	      createTxtFieldLName();
 	      createTxtPhoneN();
 	      createTxtEmail();
-		createTxtJob();
+	      createTxtJob();
 	      createTxtJobD();
 	      createButtonConfirmInfo();
 	      createButtonAddUser();
@@ -203,7 +197,7 @@ public static String getClientID() {
 			    resultPhoneN.setBounds(275, 130, 130, 25);
 			    resultEmail.setText(email);
 			    resultEmail.setBounds(275, 170, 160, 25);
-			 jobResult.setText(job);
+			    jobResult.setText(job);
 			    jobResult.setBounds(275, 200, 160, 25);
 			    jobDresult.setText(jobD);
 			    jobDresult.setBounds(275, 240, 160, 25);}    
@@ -263,6 +257,14 @@ public static String getClientID() {
 				emailField.setText("");
 				jobField.setText("");
 				jobDfield.setText("");
+				resultFName.setText("");
+				resultLName.setText("");
+				resultPhoneN.setText("");
+				resultEmail.setText("");
+				jobResult.setText("");
+				jobDresult.setText("");
+				
+				JOptionPane.showMessageDialog(clientPanel, "The information you entered has been successfully stored.");
 			 }
 	   }
 

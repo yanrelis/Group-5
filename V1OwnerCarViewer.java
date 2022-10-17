@@ -10,18 +10,15 @@ import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 //added packages for file printing
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.Timestamp;
+import javax.swing.JOptionPane;
 
 public class V1OwnerCarViewer implements ActionListener {
 	
 	private JFrame frame;
 	private JPanel mainpanel;
-	private JLabel instructions, vehicleVIN, vehicleYear, vehicleMake, vehicleModel, vehicleColor, vehicleAvailability, vehicleDamageNotes, savedMessage;
+	private JLabel instructions, vehicleVIN, vehicleYear, vehicleMake, vehicleModel, vehicleColor, vehicleAvailability, vehicleDamageNotes;
 	private JTextField inVIN, inYear, inMake, inModel, inColor, inAvailability, inDamageNotes;
 	private JButton saveButton, backButton;
 	private Timestamp time;
@@ -48,7 +45,6 @@ public class V1OwnerCarViewer implements ActionListener {
 		vehicleDamageNotes = new JLabel("Damage Notes");
 		inDamageNotes = new JTextField(10);
 		saveButton = new JButton("Store");
-		savedMessage = new JLabel("");
 		backButton = new JButton("Back");
 		
 		frame.setSize(640, 360);
@@ -103,8 +99,6 @@ public class V1OwnerCarViewer implements ActionListener {
 		backButton.addActionListener(new backButton());
 		mainpanel.add(backButton);
 		
-		savedMessage.setBounds(450, 150, 150, 100);
-		mainpanel.add(savedMessage);
 		mainpanel.setBackground(new Color(0xe9fff8));
 		
 		frame.setVisible(true);
@@ -155,7 +149,8 @@ public class V1OwnerCarViewer implements ActionListener {
 		inColor.setText("");
 		inAvailability.setText("");
 		inDamageNotes.setText("");
-		savedMessage.setText("<html>The entered information has been successfully stored.</html>");
+		
+		JOptionPane.showMessageDialog(frame, "The information you entered has been successfully stored.");
 	}
 			
 	

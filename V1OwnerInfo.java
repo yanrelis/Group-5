@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -269,6 +270,13 @@ public class V1OwnerInfo extends javax.swing.JFrame {
 					phoneNumField.setText("");
 					emailField.setText("");
 					lNumField.setText("");
+					resultFName.setText("");
+					resultLName.setText("");
+					resultPhoneN.setText("");
+					resultEmail.setText("");
+				    resultLicenseN.setText("");
+					
+					JOptionPane.showMessageDialog(ownerPanel, "The information you entered has been successfully stored.");
 			 }
 	   }
 	   

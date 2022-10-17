@@ -12,3 +12,10 @@ Licenseplate number: 0987654321
 OwnerID: 055624
 Time: 2022-10-12 14:41:29.041
 
+Name: 123 123
+Phone number: 123
+Email: 123
+Licenseplate number: 123
+OwnerID: 082834
+Time: 2022-10-17 13:05:32.151
+
