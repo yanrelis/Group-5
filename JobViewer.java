@@ -75,7 +75,7 @@ public class JobViewer  implements ActionListener {
 		backButton.addActionListener(new backButton());
 		mainpanel.add(backButton);
 		
-		savedMessage.setBounds(450, 150, 150, 100);
+		savedMessage.setBounds(50, 250, 150, 100);
 		mainpanel.add(savedMessage);
 		mainpanel.setBackground(new Color(0xe9fff8));
 		
