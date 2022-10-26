@@ -1,28 +1,19 @@
-/* Project: Project Milestone 4: Class Implementation
-* Class: VehicleOwner.java
-* Author: Andrew Vargas
-* Date: October 22nd, 2022
-* This class is used to create objects pertaining to each individual vehicle owner.
-*/ 
-
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
-public class VehicleOwner extends User {
+public class Client extends User {
 	
-	private int ownerID;
+	private int clientID;
 	private String password;
-	private ArrayList<Vehicle> ownedVehicles;
-	// private ArrayList<User> ownerInfo; <------ finish working on this later
+	private String jobName;
+	// private ArrayList<User> clientInfo; <----- finish working on this later
 	
-	public VehicleOwner(String firstName, String lastName, String phoneNumber, String email, String password)
+	public Client(String password, String jobName)
 	{
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
-		this.setPhoneNumber(phoneNumber);
-		this.setEmail(email);
 		this.password = password;
-		ownerID = generateOwnerID();
+		this.jobName = jobName;
+		clientID = generateOwnerID();
 	}
 	
 	public static int generateOwnerID() // This method generates a random ID that hasn't been used yet.
@@ -31,7 +22,7 @@ public class VehicleOwner extends User {
 		
 		try
 		{
-			File file = new File("SavedInfo\\OwnerInfo.txt");
+			File file = new File("SavedInfo\\ClientInfo.txt");
 			file.getParentFile().mkdirs();
 			Scanner scnr = new Scanner(file);
 			System.out.println(generatedID);
@@ -62,14 +53,14 @@ public class VehicleOwner extends User {
 		return generatedID;
 	}
 	
-	public int getOwnerID()
+	public int getClientID()
 	{
-		return ownerID;
+		return clientID;
 	}
 	
-	public void setOwnerID(int ownerID)
+	public void setClientID(int clientID)
 	{
-		this.ownerID = ownerID;
+		this.clientID = clientID;
 	}
 	
 	public String getPassword()
@@ -82,14 +73,14 @@ public class VehicleOwner extends User {
 		this.password = password;
 	}
 	
-	public void addVehicle(Vehicle vehicle)
+	public String getJobName()
 	{
-		ownedVehicles.add(vehicle);
+		return jobName;
 	}
 	
-	public static void main(String[] args)
+	public void setJobName(String jobName)
 	{
-		generateOwnerID();
+		this.jobName = jobName;
 	}
 	
 }
