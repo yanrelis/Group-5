@@ -1,5 +1,11 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+/* Project: Project Milestone 4: Class Implementation
+* Class: Client.java
+* Author: Andrew Vargas
+* Date: October 26th, 2022
+* This class is used to create objects pertaining to each individual client.
+*/ 
+
+import java.io.*;
 import java.util.*;
 
 public class Client extends User {
