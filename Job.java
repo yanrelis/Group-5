@@ -35,12 +35,12 @@ public class Job {
 	}
 
 	// sets the duration of a job
-	public void setjobDuration(int jobDuration) {
+	public void setJobDuration(int jobDuration) {
 		this.jobDuration = jobDuration;
 	}
 
 	// returns the duration of the specified job
-	public int getjobDuration() {
+	public int getJobDuration() {
 		return jobDuration;
 	}
 
