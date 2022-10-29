@@ -1,5 +1,5 @@
 /* Project: Project Milestone 4: Class Implementation
-* Class: VehicleOwner.java
+* Class: Vehicle.java
 * Author: Andrew Vargas
 * Date: October 25th, 2022
 * This class is used to create objects pertaining to each individual vehicle.
@@ -16,7 +16,7 @@ public class Vehicle {
 	private String vehicleDamageNotes;
 	private boolean vehicleAvailability;
 	private boolean vehicleReserved;
-	// private VehicleOwner vehicleOwner; <--- not sure if this is needed
+	private VehicleOwner vehicleOwner;
 	
 	public Vehicle(String vehicleVIN, int vehicleYear, String vehicleMake, String vehicleModel, String vehicleColor, boolean vehicleCheckedIn, String vehicleDamageNotes, boolean vehicleAvailability, boolean vehicleReserved)
 	{
@@ -118,6 +118,16 @@ public class Vehicle {
 	public void setVehicleReserved(boolean vehicleReserved)
 	{
 		this.vehicleReserved = vehicleReserved;
+	}
+	
+	public VehicleOwner getVehicleOwner()
+	{
+		return vehicleOwner;
+	}
+	
+	public void setVehicleOwner(VehicleOwner vehicleOwner)
+	{
+		this.vehicleOwner = vehicleOwner;
 	}
 	
 }
