@@ -13,7 +13,7 @@ public class VehicleOwner extends User {
 	private int ownerID;
 	private String password;
 	private ArrayList<Vehicle> ownedVehicles;
-	// private ArrayList<User> ownerInfo; <------ finish working on this later
+	// private ArrayList<User> ownerInfo; <------ finish working on this later (potentially move to System class)
 	
 	public VehicleOwner(String firstName, String lastName, String phoneNumber, String email, String password)
 	{

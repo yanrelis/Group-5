@@ -31,7 +31,7 @@ public class FIFOTest {
 	public int getCompletionTime(Job job)
 	{
 		int time = job.getJobDuration();
-		Queue<Job> tempqueue = queue;
+		Queue<Job> tempqueue = new LinkedList<>(queue);
 		Job currentJob = tempqueue.remove();
 		
 		while (currentJob.getJobID() != job.getJobID())
@@ -41,6 +41,20 @@ public class FIFOTest {
 		}
 		
 		return time;
+	}
+	
+	// This method returns the job at the entered position in the queue.
+	public Job getJob(int position)
+	{
+		Queue<Job> tempqueue = new LinkedList<>(queue);
+		Job currentJob = new Job();
+		
+		for (int i = 0; i < position; i++)
+		{
+			currentJob = tempqueue.remove();
+		}
+		
+		return currentJob;
 	}
 	
 	public static void main(String[] args)
@@ -56,7 +70,9 @@ public class FIFOTest {
 		tester.queueAdd(test3);
 		tester.queueAdd(test4);
 		
+		System.out.println(tester.getJob(1).getJobID());
 		System.out.println(tester.getCompletionTime(test4));
+		
 	}
 	
 }
