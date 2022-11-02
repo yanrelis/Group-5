@@ -49,5 +49,4 @@ public class User {
 				+ "\n Email: " + email + "\n Username: ";
 		return output;
 	}
-
 }
