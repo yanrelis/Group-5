@@ -109,12 +109,10 @@ public class Vehicle {
 	}
 
 	public String toString() {
-		String output = "Entered vehicle information: " + "\n Vehicle Owner and VIN: " + this.getVehicleOwner() + " " + this.getVehicleVIN() 
-				+ "\n Year, Make, Model and Color: " + this.getVehicleYear() + " " + this.getVehicleMake() + ", " + this.getVehicleModel() + 
-				", " + this.getVehicleColor() + "\n Vehcile availabilty and Damage notes: " + this.getVehicleAvailable() + " - "
-				+ this.getVehicleDamageNotes();
+		String output = Login.usernameField.getText() + " " + this.vehicleVIN + " " + this.vehicleYear + " "
+				+ this.vehicleModel + " " + this.vehicleMake + " " + this.vehicleDamageNotes + " " + this.vehicleColor
+				+ " " + this.vehicleAvailable;
 		return output;
-
 	}
 
 	private JFrame frame;
